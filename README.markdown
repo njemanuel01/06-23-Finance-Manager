@@ -47,6 +47,7 @@ Transactions
 ##### "Should" Cases
 
     -Be able to create and access user accounts
+    -Accounts should be able to be associated with multiple users
     -enter/edit/delete/see transactions
     -see total balances
     -see transactions/totals by category
