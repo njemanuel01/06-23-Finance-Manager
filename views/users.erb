@@ -1,0 +1,7 @@
+<h1>Here's a list of all users and their total balances.</h1>
+
+<ul>
+  <% User.all.each do |user| %>
+    <li><%= user.id %> - <%= user.name %> - <%= user.total_balance %></a></li>
+  <% end %>
+</ul>
