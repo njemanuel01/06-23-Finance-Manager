@@ -1,6 +1,7 @@
 class User
   def initialize(values = {})
     @id = values["id"]
+    @name = values["name"]
   end
   
   def total_balance
