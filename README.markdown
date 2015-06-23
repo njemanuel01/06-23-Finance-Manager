@@ -13,23 +13,54 @@ The manager will have:
   
 Every user will have one or more accounts.  Each account will have many transactions associated with it.  Each transaction will be associated with one user, one account, and one category.
   
-##### Models
+##### Tables
 
-  -a user model to track which user is accessing the manager
-  -an accounts model to track changes to a users accounts
-  -a transactions model to track specific debits/credits to an account
-  -a category model to describe the type of transaction being processed (Ex. Utilities, Food, etc.)
-  -an acct.-user bridge to link users to their accounts (since an account may have multiple users(husband/wife) or a user may have multiple accounts)
+User
+
+  -id
+  -name
+  
+Accounts
+
+  -id
+  -name
+  
+Acct.-User Bridge
+
+  -user_id
+  -account_id
+  
+Category
+
+  -id
+  -name
+  
+Transactions
+
+  -id
+  -amount
+  -description
+  -date
+  -category_id
+  -account_id
  
 ##### "Should" Cases
 
   -Be able to create and access user accounts
   -enter/edit/delete/see transactions
   -see total balances
-  -see transactions/totals by category/date range
+  -see transactions/totals by category
    
 ##### "Should Not" Cases
 
   -Delete a category that has transactions associated with it
   -Delete an account with a balance that is not 0.00
+  
+##### Requirements
+
+  • At least three models
+       • At least one _one-to-many_ relationship
+       • At least one _many-to-many_ relationship
+  • Unit tests for all business logic
+  • Ability to fully interact with the application from the browser
   
