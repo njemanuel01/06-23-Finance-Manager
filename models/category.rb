@@ -1,17 +1,23 @@
 require_relative "database_class_methods.rb"
 require_relative "database_instance_methods.rb"
-# This class performs functions related to adding, updating, and deleting elements from the categories table in the saints database.
+
 class Category
   extend DatabaseClassMethod
   include DatabaseInstanceMethod
   
-  attr_accessor :id, :category_name, :errors
-  # Creates an instance of the Category class.
+  attr_reader :id, :errors
+  attr_accessor :category_name
+  
+  # Creates a new instance of the Category class.
   #
-  # values - hash with "id" and "category_name" values
+  # values = hash with id and name
+  #    - id = integer value, optional
+  #    - name = string value
+  #
+  # Returns a Category object
   def initialize(values = {})
-    @id = values["id"].to_i
-    @category_name = values["category_name"]
+    @id = values["id"]
+    @name = values["name"]
     @errors = []
   end
   
@@ -29,6 +35,9 @@ class Category
     return @errors.empty?
   end
   
+  # Tests to see if a category can be deleted
+  #
+  # Returns a Boolean
   def delete?
     transactions_array = CONNECTION.execute("SELECT * FROM transactions WHERE category_id = ?;", @id)
     
