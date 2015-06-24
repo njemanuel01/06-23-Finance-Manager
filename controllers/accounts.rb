@@ -11,7 +11,13 @@ end
 # Add account to table
 get "/new_account_form_do" do
   account = Account.add({"type" => params["type"], "balance" => 0})
-  # add something to accounts_users
+  account.bridge(params["id1"])
+  if params["id2"] != "blank"
+    account.bridge(params["id2"])
+  end
+  if params["id3"] != "blank"
+    account.bridge(params["id3"])
+  end
   erb :"accounts/added"
 end
 

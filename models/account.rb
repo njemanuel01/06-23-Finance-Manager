@@ -27,6 +27,10 @@ class Account
     @balance -= diff
   end
   
+  def bridge(user_id)
+    CONNECTION.execute("INSERT INTO accounts_users (user_id, account_id) VALUES (?, ?);", user_id, @id)
+  end
+  
   def delete?
     if @balance == 0
       return true
