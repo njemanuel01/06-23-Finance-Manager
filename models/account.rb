@@ -18,10 +18,20 @@ class Account
     return user_array
   end
   
+  def transaction(amount)
+    @balance += amount
+  end
+  
+  def update_balance(old_value, new_value = 0)
+    diff = old_value - new_value
+    @balance -= diff
+  end
+  
   def delete?
     if @balance == 0
       return true
     else
       return false
     end
+  end
 end

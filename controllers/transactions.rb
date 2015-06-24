@@ -11,7 +11,7 @@ end
 # Add transaction to table
 get "/new_transaction_form_do" do
   account = Account.find(params["account_id"])
-  account.transaction
+  account.transaction(params["amount"].to_f)
   account.save
   transaction = Transaction.add({"amount" => params["amount"].to_f, "description" => params["description"], "date" => params["date"], 
     "category_id" => params["category_id"], "account_id" => params["account_id"]})
@@ -48,8 +48,10 @@ get "/update_transaction_form_do" do
     @message << "Transaction category updated."
   end
   if params["amount"] != ""
+    account = Account.find(params["account_id"])
+    account.update_balance(transaction.amount, params["amount"].to_f)
+    
     transaction.amount = params["amount"].to_f
-    # update account total
     @message << "Transaction amount updated."
   end
   if params["date"] != ""
@@ -72,8 +74,9 @@ end
 
 # Deletes transaction from table
 get "/delete_transaction" do
-  #update to account balance
   transaction = Transaction.find(params["id"])
+  account = Account.find(params["account_id"])
+  account.update_balance(transaction.amount)
   transaction.delete
   erb :"transactions/deleted"
 end
