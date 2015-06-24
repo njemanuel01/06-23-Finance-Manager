@@ -13,3 +13,8 @@ end
 get "/all_users" do
   erb :"users/users"
 end
+
+get "/single_user" do
+  @user = User.new(params["id"])
+  erb :"users/user_single"
+end
