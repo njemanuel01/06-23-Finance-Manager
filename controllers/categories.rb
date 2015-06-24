@@ -33,7 +33,7 @@ end
 get "/delete_category" do
   category = Category.find(params["id"])
   if category.delete?
-    catgegory.delete
+    category.delete
     erb :"categories/deleted"
   else
     @message = "The category has transactions associated with it, it cannot be deleted."

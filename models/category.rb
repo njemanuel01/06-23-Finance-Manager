@@ -6,7 +6,7 @@ class Category
   include DatabaseInstanceMethod
   
   attr_reader :id, :errors
-  attr_accessor :category_name
+  attr_accessor :name
   
   # Creates a new instance of the Category class.
   #
@@ -27,7 +27,8 @@ class Category
   def valid?
     array = self.class.all
     array.each do |category|
-      if @category_name == category.category_name
+      binding.pry
+      if @name == category.name
         @errors << "This category already exists."
       end
     end
