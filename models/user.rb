@@ -1,9 +1,9 @@
-require_relative "database_class_methods.rb"
-require_relative "database_instance_methods.rb"
+require_relative "../database_class_methods.rb"
+require_relative "../database_instance_methods.rb"
 
 class User
-  extend DatabaseClassMethods
-  include DatabaseInstanceMethods
+  extend DatabaseClassMethod
+  include DatabaseInstanceMethod
   
   attr_reader :id
   attr_accessor :name
@@ -26,7 +26,7 @@ class User
   def total_balance
     account_array = self.accounts
     total = 0
-    account_array.each do [x]
+    account_array.each do |x|
       result = CONNECTION.execute("SELECT balance FROM accounts WHERE id = ?;", x).first
       total += result["balance"]
     end
