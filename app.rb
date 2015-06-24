@@ -14,5 +14,7 @@ require_relative "models/transaction.rb"
 
 # Controllers
 require_relative "controllers/main.rb"
-require_relative "controllers/questions.rb"
-require_relative "controllers/students.rb"
+require_relative "controllers/accounts.rb"
+require_relative "controllers/categories.rb"
+require_relative "controllers/users.rb"
+require_relative "controllers/transactions.rb"
