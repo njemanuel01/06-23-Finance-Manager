@@ -19,7 +19,7 @@ class Transaction
   #    - account_id = int value
   #
   # Returns a Transaction object
-  def initialize(value={})
+  def initialize(values ={})
     @id = values["id"]
     @amount = values["amount"]
     @description = values["description"]
