@@ -13,7 +13,7 @@ get "/new_transaction_form_do" do
   account = Account.find(params["account_id"])
   account.transaction
   account.save
-  transaction = Transaction.add({"amount" => params["amount"], "description" => params["description"], "date" => params["date"], 
+  transaction = Transaction.add({"amount" => params["amount"].to_f, "description" => params["description"], "date" => params["date"], 
     "category_id" => params["category_id"], "account_id" => params["account_id"]})
   # update account balance
   erb :"transactions/added"
@@ -38,8 +38,30 @@ end
 # Save updates to table
 get "/update_transaction_form_do" do
   transaction = Transaction.find(params["id"])
-  #muliple updates
+  @message = []
+  if params["account_id"] != "blank"
+    transaction.account_id = params["account_id"]
+    @message << "Transaction account updated."
+  end
+  if params["category_id"] != "blank"
+    transaction.category_id = params["category_id"]
+    @message << "Transaction category updated."
+  end
+  if params["amount"] != ""
+    transaction.amount = params["amount"].to_f
+    # update account total
+    @message << "Transaction amount updated."
+  end
+  if params["date"] != ""
+    transaction.date = params["date"]
+    @message << "Transaction date updated."
+  end
+  if params["description"] != ""
+    transaction.description = params["description"]
+    @message << "Transaction description updated."
+  end
   
+  transaction.save
   erb :"transactions/updated"
 end
 
