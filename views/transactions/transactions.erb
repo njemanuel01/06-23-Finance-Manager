@@ -1,0 +1,11 @@
+<h1>Here's a list of all transactions. Click on a user to see their full details.</h1>
+
+<ul>
+  <% Transaction.all.each do |transaction| %>
+    <li><a href="/single_transaction/<%=transaction.id%>"><%= transaction.id %> - <%= transaction.amount %> - 
+      <%= transaction.date %></a></li>
+  <% end %>
+</ul>
+
+<a href="/transactions_menu">Transactions Menu?</a></b>
+<a href="/home">Main Menu?</a>
