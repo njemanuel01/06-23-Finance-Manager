@@ -22,7 +22,7 @@ end
 
 # Get information on a single user
 get "/single_account/:id" do
-  @account = Account.new(params["id"])
+  @account = Account.find(params["id"])
   erb :"accounts/account_single"
 end
 
@@ -46,7 +46,7 @@ end
 
 # Deletes account from table
 get "/delete_account" do
-  account = Account.new(params["id"])
+  account = Account.find(params["id"])
   if account.delete?
     account.delete
     erb :"accounts/deleted"

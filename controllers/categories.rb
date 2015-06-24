@@ -31,7 +31,7 @@ end
 
 # Deletes category from table
 get "/delete_category" do
-  category = Category.new(params["id"])
+  category = Category.find(params["id"])
   if category.delete?
     catgegory.delete
     erb :"categories/deleted"

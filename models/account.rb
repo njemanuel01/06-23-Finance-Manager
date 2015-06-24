@@ -18,4 +18,10 @@ class Account
     return user_array
   end
   
+  def delete?
+    if @balance == 0
+      return true
+    else
+      return false
+    end
 end

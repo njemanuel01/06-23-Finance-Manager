@@ -22,7 +22,7 @@ end
 
 # Get information on a single user
 get "/single_user/:id" do
-  @user = User.new(params["id"])
+  @user = User.find(params["id"])
   erb :"users/user_single"
 end
 
@@ -46,7 +46,7 @@ end
 
 # Deletes user from table
 get "/delete_user" do
-  user = User.new(params["id"])
+  user = User.find(params["id"])
   if user.delete?
     user.delete
     erb :"users/deleted"
