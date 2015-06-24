@@ -10,7 +10,7 @@ end
 
 # Add transaction to table
 get "/new_transaction_form_do" do
-  transaction = Transaction.add({"amount" => params["amount"], "description" => params["description"], "date" => params["date"], 
+  transaction = Transaction.add({"amount" => params["amount"].to_f, "description" => params["description"], "date" => params["date"], 
     "category_id" => params["category_id"], "account_id" => params["account_id"]})
   # update account balance
   erb :"transactions/added"
