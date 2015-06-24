@@ -1,7 +1,10 @@
-<h1>Here's a list of all users.</h1>
+<h1>Here's a list of all accounts. Click on an account to see it's full details.</h1>
 
 <ul>
-  <% User.all.each do |user| %>
-    <li><%= user.id %> - <%= user.name %></a></li>
+  <% Account.all.each do |account| %>
+    <li><a href="/single_account/<%=account.id%>"><%= account.id %> - <%= user.type %></a></li>
   <% end %>
 </ul>
+
+<a href="/accounts_menu">Users Menu?</a></b>
+<a href="/home">Main Menu?</a>

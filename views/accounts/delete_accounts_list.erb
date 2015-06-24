@@ -1,0 +1,13 @@
+<p><%= @message %></p>
+
+<h1>Please select an account to delete.  It can only be deleted if there is no balance.</h1>
+<form action="/delete_account">
+  <select name ="id">
+    <% Account.all.each do |account| %> 
+      <option value="<%= account.id %>"><%= account.id %></option>
+    <% end %>
+  </select>
+</form>
+
+<a href="/accounts_menu">Accounts Menu?</a></b>
+<a href="/home">Main Menu?</a>

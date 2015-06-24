@@ -33,7 +33,7 @@ end
 
 # Save updates to table
 get "/update_user_form_do" do
-  user = User.find(params["country_id"])
+  user = User.find(params["id"])
   user.name = params["name"]
   user.save
   erb :"users/updated"
