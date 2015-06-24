@@ -3,11 +3,11 @@ class Transaction
   attr_accessor :description, :date
   def initialize(value={})
     @id = values["id"]
-    @account_id = values["account_id"]
-    @category_id = values["category_id"]
     @amount = values["amount"]
     @description = values["description"]
     @date = values["date"]
+    @category_id = values["category_id"]
+    @account_id = values["account_id"]
   end
   
   
