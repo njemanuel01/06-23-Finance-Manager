@@ -1,0 +1,12 @@
+<h1>Please select a transaction to delete.</h1>
+<form action="/delete_transaction">
+  <select name ="id">
+    <% Transaction.all.each do |transaction| %> 
+      <option value="<%= transaction.id %>"><%= transaction.amount %> - <%= transaction.date%> - 
+        <%= transaction.category%></option>
+    <% end %>
+  </select>
+</form>
+
+<a href="/transactions_menu">Transactions Menu?</a></b>
+<a href="/home">Main Menu?</a>

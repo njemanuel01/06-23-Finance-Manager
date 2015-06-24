@@ -10,7 +10,10 @@ end
 
 # Add transaction to table
 get "/new_transaction_form_do" do
-  transaction = Transaction.add({"amount" => params["amount"].to_f, "description" => params["description"], "date" => params["date"], 
+  account = Account.find(params["account_id"])
+  account.transaction
+  account.save
+  transaction = Transaction.add({"amount" => params["amount"], "description" => params["description"], "date" => params["date"], 
     "category_id" => params["category_id"], "account_id" => params["account_id"]})
   # update account balance
   erb :"transactions/added"
@@ -47,7 +50,8 @@ end
 
 # Deletes transaction from table
 get "/delete_transaction" do
+  #update to account balance
   transaction = Transaction.find(params["id"])
-  user.delete
+  transaction.delete
   erb :"transactions/deleted"
 end
