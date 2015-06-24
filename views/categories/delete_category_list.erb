@@ -1,0 +1,13 @@
+<p><%= @message %></p>
+
+<h1>Please select a category to delete.  It can only be deleted if there are no transactions associated with it.</h1>
+<form action="/delete_category">
+  <select name ="id">
+    <% Category.all.each do |category| %> 
+      <option value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+  </select>
+</form>
+
+<a href="/categories_menu">Categories Menu?</a></b>
+<a href="/home">Main Menu?</a>

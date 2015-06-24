@@ -1,6 +1,6 @@
 # Main menus for users
 get "/users_menu" do
-  erb :users_menu
+  erb :"users/users_menu"
 end
 
 # Create a new user

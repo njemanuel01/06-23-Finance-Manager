@@ -29,4 +29,10 @@ class Category
     return @errors.empty?
   end
   
+  def delete?
+    transactions_array = CONNECTION.execute("SELECT * FROM transactions WHERE category_id = ?;", @id)
+    
+    return transactions_array.empty?
+  end
+  
 end
