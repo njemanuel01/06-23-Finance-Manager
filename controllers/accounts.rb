@@ -46,7 +46,7 @@ get "/update_account_form_do" do
 end
 
 # Choose an account to delete
-get "/delete_acount_list" do
+get "/delete_account_list" do
   erb :"accounts/delete_account_list"
 end
 

@@ -2,9 +2,9 @@
 
 <ul>
   <% Account.all.each do |account| %>
-    <li><a href="/single_account/<%=account.id%>"><%= account.id %> - <%= user.type %></a></li>
+    <li><a href="/single_account/<%=account.id%>"><%= account.id %> - <%= account.type %></a></li>
   <% end %>
 </ul>
 
-<a href="/accounts_menu">Users Menu?</a></b>
+<a href="/accounts_menu">Accounts Menu?</a></b>
 <a href="/home">Main Menu?</a>

@@ -3,7 +3,7 @@
 <form action="/update_account_form_do">
   <select name ="id">
     <% Account.all.each do |account| %> 
-      <option value="<%= account.id %>"><%= account.type %></option>
+      <option value="<%= account.id %>"><%= account.id %> - <%= account.type %></option>
     <% end %>
   </select>
   <p>What would you like to update the account's type to?</p>
