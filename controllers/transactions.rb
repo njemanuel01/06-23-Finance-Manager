@@ -30,6 +30,11 @@ get "/single_transaction/:id" do
   erb :"transactions/transaction_single"
 end
 
+# Get a list of transactions for a specific account
+get "/where" do
+  erb :"transactions/where_account"
+end
+
 # Form to update transactions with
 get "/update_transaction_form" do
   erb :"transactions/update_transaction_form"
