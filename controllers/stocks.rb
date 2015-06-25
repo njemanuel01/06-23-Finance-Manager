@@ -5,5 +5,5 @@ end
 get "/stock_form_do" do
   @stock = Stock.new(params["stock"]["symbol"])
   @message = @stock.error
-  erb :"stock_info"
+  erb :"stocks/stock_info"
 end
