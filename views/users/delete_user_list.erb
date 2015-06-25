@@ -2,7 +2,7 @@
 
 <h1>Please select a user to delete.  They can only be deleted if there are not accounts associated with them.</h1>
 <form action="/delete_user">
-  <select name ="id">
+  <select name ="user[id]">
     <% User.all.each do |user| %> 
       <option value="<%= user.id %>"><%= user.name %></option>
     <% end %>

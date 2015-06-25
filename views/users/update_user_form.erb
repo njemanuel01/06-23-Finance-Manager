@@ -1,13 +1,13 @@
 <h1>Please select the user you wish to update.</h1>
 
 <form action="/update_user_form_do">
-  <select name ="id">
+  <select name ="user[id]">
     <% User.all.each do |user| %> 
       <option value="<%= user.id %>"><%= user.name %></option>
     <% end %>
   </select>
   <p>What would you like to update the user's name to?</p>
-  <input type="text" placeholder="Update name" name="name">
+  <input type="text" placeholder="Update name" name="user[name]">
   <input type='submit'>
 </form>
 

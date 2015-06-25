@@ -10,7 +10,7 @@ end
 
 # Add user to table
 get "/new_user_form_do" do
-  user = User.add({"name" => params["name"]})
+  user = User.add({"name" => params["user"]["name"]})
   
   erb :"users/added"
 end
@@ -33,8 +33,8 @@ end
 
 # Save updates to table
 get "/update_user_form_do" do
-  user = User.find(params["id"])
-  user.name = params["name"]
+  user = User.find(params["user"]["id"])
+  user.name = params["user"]["name"]
   user.save
   erb :"users/updated"
 end
@@ -46,7 +46,7 @@ end
 
 # Deletes user from table
 get "/delete_user" do
-  user = User.find(params["id"])
+  user = User.find(params["user"]["id"])
   if user.delete?
     user.delete
     erb :"users/deleted"
