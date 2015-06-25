@@ -10,11 +10,11 @@
 </form>
 
 <% if params["id"]%>
-  <h1>Here they are</h1>
+  <h1>Here they are. Click on a transaction to see it's full details.'</h1>
 
   <ul>  
     <% Transaction.where("account_id", params["id"]).each do |transaction| %>
-      <li><%= transaction.id %> - <%= transaction.amount%> - <%= transaction.date%> - <%= transaction.description%></li>
+      <li><a href="/single_transaction/<%=transaction.id%>"><%= transaction.id %> - <%= transaction.amount%> - <%= transaction.date%> - <%= transaction.description%></li>
       <% end %>
   </ul>
 <% end %>
