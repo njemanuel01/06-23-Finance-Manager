@@ -54,6 +54,7 @@ end
 get "/delete_account" do
   account = Account.find(params["id"])
   if account.delete?
+    account.delete_bridges
     account.delete
     erb :"accounts/deleted"
   else

@@ -35,6 +35,11 @@ class Account
     return user_array
   end
   
+  # Deletes rows in accounts_users associated with the account
+  def delete_bridges
+    CONNECTION.execute("DELETE FROM accounts_users WHERE account_id = ?;", @id)
+  end
+  
   # Adds a transaction amount to the account balance
   #
   # amount - float value

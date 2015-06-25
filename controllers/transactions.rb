@@ -50,7 +50,7 @@ get "/update_transaction_form_do" do
   if params["amount"] != ""
     account = Account.find(transaction.account_id)
     account.update_balance(transaction.amount, params["amount"].to_f)
-    
+    account.save
     transaction.amount = params["amount"].to_f
     @message << "Transaction amount updated."
   end
@@ -75,8 +75,9 @@ end
 # Deletes transaction from table
 get "/delete_transaction" do
   transaction = Transaction.find(params["id"])
-  account = Account.find(params["account_id"])
+  account = Account.find(transaction.account_id)
   account.update_balance(transaction.amount)
+  account.save
   transaction.delete
   erb :"transactions/deleted"
 end
