@@ -1,0 +1,25 @@
+<h1>Enter the symbol for the company you would like stock information on.</h1>
+
+<form action="/stock">
+  <input type="text" placeholder="Ex. aapl = Apple" name="stock[symbol]" value="<%=params["stock"]["symbol"]%>">
+  <input type='submit'>
+</form>
+
+<% if @message %>
+<p><%= @message%></p>
+<p>Stock Symbol</p>
+<p><%= @stock.symbol %></p>
+<p>Stock Book Value</p>
+<p><%= @stock.book_value %></p>
+<p>Stock Bid Price</p>
+<p><%= @stock.bid %></p>
+<p>Stock Offer Price</p>
+<p><%= @stock.offer %></p>
+<p>Stock Day Low</p>
+<p><%= @stock.day_low %></p>
+<p>Stock Day High</p>
+<p><%= @stock.day_high %></p>
+<p>Stock Day Range</p>
+<p><%= @stock.day_range %></p>
+<% end %>
+
