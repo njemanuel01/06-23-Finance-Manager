@@ -3,9 +3,10 @@
   <select name ="id">
     <% Transaction.all.each do |transaction| %> 
       <option value="<%= transaction.id %>"><%= transaction.amount %> - <%= transaction.date%> - 
-        <%= transaction.category%></option>
+        <%= transaction.description %></option>
     <% end %>
   </select>
+  <input type='submit'>
 </form>
 
 <a href="/transactions_menu">Transactions Menu?</a></b>

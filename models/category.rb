@@ -27,7 +27,6 @@ class Category
   def valid?
     array = self.class.all
     array.each do |category|
-      binding.pry
       if @name == category.name
         @errors << "This category already exists."
       end

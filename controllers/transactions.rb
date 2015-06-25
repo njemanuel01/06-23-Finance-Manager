@@ -48,7 +48,7 @@ get "/update_transaction_form_do" do
     @message << "Transaction category updated."
   end
   if params["amount"] != ""
-    account = Account.find(params["account_id"])
+    account = Account.find(transaction.account_id)
     account.update_balance(transaction.amount, params["amount"].to_f)
     
     transaction.amount = params["amount"].to_f
