@@ -1,7 +1,7 @@
 require "minitest/autorun"
-require_relative "../models/category.rb"
+require_relative "../models/account.rb"
 
-class CategoryTest < Minitest::Test
+class AccountTest < Minitest::Test
   #test the update_balance method updates the balance correctly
   def test_update_balance
     hash = {"balance" => 10}
