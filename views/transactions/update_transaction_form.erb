@@ -1,7 +1,7 @@
 <h1>Please select the transaction you wish to update.</h1>
 
 <form action="/update_transaction_form_do">
-  <select name ="id">
+  <select name ="transaction[id]">
     <% Transaction.all.each do |transaction| %> 
       <option value="<%= transaction.id %>"><%= transaction.amount %> - <%= transaction.date %> - 
         <%= transaction.description %></option>
@@ -9,21 +9,21 @@
   </select>
   
   <p>To update the transaction's amount, type here.</p>
-  <input type="text" placeholder="Ex. 12.12 for credits, -12.12 for debits" name="amount">
+  <input type="text" placeholder="Ex. 12.12 for credits, -12.12 for debits" name="transaction[amount]">
   <p>To update the transactions description, type here.
-  <input type="text" placeholder="Update description" name="description">
+  <input type="text" placeholder="Update description" name="transaction[description]">
   <p>To update the transactions's date, type here.</p>
-  <input type="text" placeholder="Ex. 06-01-2015" name="date">
+  <input type="text" placeholder="Ex. 06-01-2015" name="transaction[date]">
   
   <h3>For category update, please select the new category (leave blank if you do not wish to update)</h3>
-  <select name ="category_id">
+  <select name ="transaction[category_id]">
     <option value="blank"></option>
     <% Category.all.each do |category| %>
       <option value="<%= category.id %>"><%= category.name %></option>
     <% end %>
   </select></b>
   <h3>For account update, please select the new account (leave blank if you do not wish to update)</h3>
-  <select name ="account_id">
+  <select name ="transaction[account_id]">
     <option value="blank"></option>
     <% Account.all.each do |account| %> 
       <option value="<%= account.id %>"><%= account.id %></option>

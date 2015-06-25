@@ -1,6 +1,6 @@
 <h1>Please select a transaction to delete.</h1>
 <form action="/delete_transaction">
-  <select name ="id">
+  <select name ="transaction[id]">
     <% Transaction.all.each do |transaction| %> 
       <option value="<%= transaction.id %>"><%= transaction.amount %> - <%= transaction.date%> - 
         <%= transaction.description %></option>
