@@ -1,15 +1,14 @@
 require "stock_quote"
 
 class Stock
-  attr_reader :symbol, :bid, :offer, :book_value, :day_low, :day_high, :day_range
+  attr_reader :symbol, :bid, :change, :change_percent, :day_range
 
   def initialize(symbol)
     @stock = StockQuote::Stock.quote(symbol)
     @symbol = @stock.symbol
     @bid = @stock.bid
-    @book_value = @stock.book_value
-    @day_low = @stock.days_low
-    @day_high = @stock.days_high
+    @change = @stock.change
+    @change_percent = @stock.change_percent_change
     @day_range = @stock.days_range
   end
 
