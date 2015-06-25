@@ -40,7 +40,13 @@ get "/update_transaction_form_do" do
   transaction = Transaction.find(params["id"])
   @message = []
   if params["account_id"] != "blank"
+    account = Account.find(transaction.account_id)
+    account.update_balance(transaction.amount)
+    account.save
     transaction.account_id = params["account_id"]
+    account = Account.find(transaction.account_id)
+    account.transaction(transaction.amount)
+    account.save
     @message << "Transaction account updated."
   end
   if params["category_id"] != "blank"
