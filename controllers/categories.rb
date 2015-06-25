@@ -10,7 +10,7 @@ end
 
 # Add category to table
 get "/new_category_form_do" do
-  category = Category.new({"id" => nil, "name" => params["name"]})
+  category = Category.new({"id" => nil, "name" => params["category"]["name"]})
   if category.add_to_database
     erb :"categories/added"
   else
@@ -31,7 +31,7 @@ end
 
 # Deletes category from table
 get "/delete_category" do
-  category = Category.find(params["id"])
+  category = Category.find(params["category"]["id"])
   if category.delete?
     category.delete
     erb :"categories/deleted"
