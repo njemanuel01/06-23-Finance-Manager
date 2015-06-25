@@ -1,24 +1,24 @@
 <h1>Enter the information for the account to be added.</h1>
 
 <form action="/new_account_form_do">
-  <select name ="type">
+  <select name ="account[type]">
     <option value="Checking">Checking</option>
     <option value="Savings">Savings</option>
   </select>
   
   <p>Which users have access to this account? (up to three)</p>
-  <select name ="id1">
+  <select name ="account[id1]">
     <% User.all.each do |user| %> 
       <option value="<%= user.id %>"><%= user.name %></option>
     <% end %>
   </select>
-  <select name ="id2">
+  <select name ="account[id2]">
     <option value="blank"></option>
     <% User.all.each do |user| %> 
       <option value="<%= user.id %>"><%= user.name %></option>
     <% end %>
   </select>
-  <select name ="id3">
+  <select name ="account[id3]">
     <option value="blank"></option>
     <% User.all.each do |user| %> 
       <option value="<%= user.id %>"><%= user.name %></option>

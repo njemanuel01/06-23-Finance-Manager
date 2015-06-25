@@ -1,13 +1,13 @@
 <h1>Please select the account you wish to update.</h1>
 
 <form action="/update_account_form_do">
-  <select name ="id">
+  <select name ="account[id]">
     <% Account.all.each do |account| %> 
       <option value="<%= account.id %>"><%= account.id %> - <%= account.type %></option>
     <% end %>
   </select>
   <p>What would you like to update the account's type to?</p>
-  <select name ="type">
+  <select name ="account[type]">
     <option value="Checking">Checking</option>
     <option value="Savings">Savings</option>
   </select>

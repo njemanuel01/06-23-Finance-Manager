@@ -10,13 +10,13 @@ end
 
 # Add account to table
 get "/new_account_form_do" do
-  account = Account.add({"type" => params["type"], "balance" => 0})
-  account.bridge(params["id1"])
-  if params["id2"] != "blank"
-    account.bridge(params["id2"])
+  account = Account.add({"type" => params["account"]["type"], "balance" => 0})
+  account.bridge(params["account"]["id1"])
+  if params["account"]["id2"] != "blank"
+    account.bridge(params["account"]["id2"])
   end
-  if params["id3"] != "blank"
-    account.bridge(params["id3"])
+  if params["account"]["id3"] != "blank"
+    account.bridge(params["account"]["id3"])
   end
   erb :"accounts/added"
 end
@@ -39,8 +39,8 @@ end
 
 # Save updates to table
 get "/update_account_form_do" do
-  account = Account.find(params["id"])
-  account.type = params["type"]
+  account = Account.find(params["account"]["id"])
+  account.type = params["account"]["type"]
   account.save
   erb :"accounts/updated"
 end
@@ -52,7 +52,7 @@ end
 
 # Deletes account from table
 get "/delete_account" do
-  account = Account.find(params["id"])
+  account = Account.find(params["account"]["id"])
   if account.delete?
     account.delete_bridges
     account.delete

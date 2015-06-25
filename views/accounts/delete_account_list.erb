@@ -2,7 +2,7 @@
 
 <h1>Please select an account to delete.  It can only be deleted if there is no balance.</h1>
 <form action="/delete_account">
-  <select name ="id">
+  <select name ="account[id]">
     <% Account.all.each do |account| %> 
       <option value="<%= account.id %>"><%= account.id %></option>
     <% end %>
