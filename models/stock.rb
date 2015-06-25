@@ -2,7 +2,7 @@ require "stock_quote"
 
 class Stock
   attr_reader :name, :bid, :offer, :book_value, :day_low, :day_high, :day_range
-  
+
   def initialize(symbol)
     @stock = StockQuote::Stock.quote(symbol)
     @symbol = @stock.symbol
@@ -13,7 +13,7 @@ class Stock
     @day_high = @stock.day_high
     @day_range = @stock.day_range
   end
-  
+
   def error
     if @stock.response_code = 404
       "Invalid stock symbol"
@@ -21,5 +21,5 @@ class Stock
       "Here's the information"
     end
   end
-    
+
 end
