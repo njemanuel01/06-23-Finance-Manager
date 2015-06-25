@@ -22,6 +22,6 @@ class AccountTest < Minitest::Test
   def test_delete?
     hash = {"balance" => 0}
     test = Account.new(hash)
-    assert(test.valid?)
+    assert(test.delete?)
   end
 end
