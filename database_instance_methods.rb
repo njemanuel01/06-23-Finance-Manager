@@ -16,7 +16,7 @@ module DatabaseInstanceMethod
   #
   # Returns a string.
   def save
-    hash = attr_hash
+    hash = self.attr_hash
     sql_hash = hash.to_s.delete "\>"
 
     CONNECTION.execute("UPDATE '#{self.class.to_s.pluralize.underscore}' SET #{sql_hash[1...-1]} WHERE id = ?;", @id)
@@ -27,9 +27,11 @@ module DatabaseInstanceMethod
   #
   # Returns a Hash
   def attr_hash
+    hash = {}
     self.instance_variables.each {|var| hash[var.to_s.delete("@")] = self.instance_variable_get(var) }
     hash.delete("id")
     hash.delete("errors")
+    return hash
   end
   
   # Deletes a row from a table
@@ -44,8 +46,7 @@ module DatabaseInstanceMethod
   #
   # Returns a Boolean.
   def add_to_database
-    hash = attr_hash
-    
+    hash = self.attr_hash
     columns = hash.keys
     values = hash.values
     if self.valid?
