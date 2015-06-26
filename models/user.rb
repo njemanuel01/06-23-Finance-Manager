@@ -26,25 +26,18 @@ class User
   def total_balance
     account_array = self.accounts
     total = 0
-    account_array.each do |x|
-      result = CONNECTION.execute("SELECT balance FROM accounts WHERE id = ?;", x).first
-      total += result["balance"]
+    account_array.each do |account|
+      total += account["balance"]
     end
-    
     return total
   end
   
   # Finds all accounts associated with a user
   #
-  # Returns an Array of integers
+  # Returns an Array of Hashes
   def accounts
-    account_array = []
-    db_array = CONNECTION.execute("SELECT account_id FROM accounts_users WHERE user_id = ?;", @id)
-    db_array.each do |x|
-      account_array << x["account_id"]
-    end
-    
-    return account_array
+    CONNECTION.execute("SELECT accounts.id, accounts.type, accounts.balance FROM accounts_users 
+    JOIN accounts ON accounts_users.account_id = accounts.id WHERE accounts_users.user_id = ?;", @id)
   end
   
   # Tests to see if a user can be deleted

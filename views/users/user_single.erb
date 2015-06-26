@@ -3,7 +3,19 @@
 <h3>User Name</h3>
 <p><%= @user.name %></p>
 <h3>User Accounts</h3>
-<p><%= @user.accounts %></p>
+<table>
+  <tr>
+    <td>Account #</td>
+    <td>Type</td>
+    <td>Balance</td>
+  <% @accounts.each do |account|%>
+  <tr>
+    <td><a href="/single_account/<%=account["id"]%>"><%= account["id"]%></a></td>
+    <td><%= account["type"]%></td>
+    <td><%= account["balance"]%></td>
+  </tr>
+  <% end %>
+</table>
 <h3>User Total Balance</h3>
 <p><%= @user.total_balance %></p>
 
