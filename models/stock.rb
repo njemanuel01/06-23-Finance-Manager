@@ -1,7 +1,7 @@
 require "stock_quote"
 
 class Stock
-  attr_reader :symbol, :bid, :change, :change_percent, :day_range
+  attr_reader :name, :bid, :change, :change_percent, :day_range
   # Creates a new Stock object
   #
   # symbol - string for the company stock symbol
@@ -9,7 +9,7 @@ class Stock
   # Returns an object of the Stock class
   def initialize(symbol)
     @stock = StockQuote::Stock.quote(symbol)
-    @symbol = @stock.symbol
+    @name = @stock.name
     @bid = @stock.bid
     @change = @stock.change
     @change_percent = @stock.change_percent_change
@@ -20,7 +20,7 @@ class Stock
   #
   # Returns a string
   def error
-    if @stock.response_code = 404
+    if @stock.response_code == 404
       "Invalid stock symbol"
     else
       "Here's the information"
