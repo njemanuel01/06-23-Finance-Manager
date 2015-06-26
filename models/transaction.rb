@@ -5,7 +5,7 @@ class Transaction
   extend DatabaseClassMethod
   include DatabaseInstanceMethod
   
-  attr_reader :id
+  attr_reader :id, :errors
   attr_accessor :amount, :description, :date, :category_id, :account_id
   
   # Creates a new instance of the Transaction class.
@@ -26,7 +26,15 @@ class Transaction
     @date = values["date"]
     @category_id = values["category_id"]
     @account_id = values["account_id"]
+    @errors = []
   end
   
-  
+  def valid?
+    if @amount == 0
+      @errors << "Invalid amount"
+    end
+    
+    return @errors.empty?
+  end
+    
 end

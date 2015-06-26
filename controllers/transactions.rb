@@ -10,13 +10,17 @@ end
 
 # Add transaction to table
 get "/new_transaction_form_do" do
-  account = Account.find(params["transaction"]["account_id"])
-  account.transaction(params["transaction"]["amount"].to_f)
-  account.save
-  transaction = Transaction.add({"amount" => params["transaction"]["amount"].to_f, "description" => params["transaction"]["description"], "date" => params["transaction"]["date"], 
+  transaction = Transaction.new({"id" => nil, "amount" => params["transaction"]["amount"].to_f, "description" => params["transaction"]["description"], "date" => params["transaction"]["date"], 
     "category_id" => params["transaction"]["category_id"], "account_id" => params["transaction"]["account_id"]})
-  # update account balance
-  erb :"transactions/added"
+  if transaction.add_to_database
+    account = Account.find(params["transaction"]["account_id"])
+    account.transaction(params["transaction"]["amount"].to_f)
+    account.save
+    erb :"transactions/added"
+  else
+    @errors = transaction.errors
+    erb :"transactions/new_transaction_form"
+  end
 end
 
 # Get a list of all transactions and their information
