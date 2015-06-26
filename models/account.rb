@@ -65,9 +65,7 @@ class Account
   # Returns a Boolean 
   def delete?
     if @balance == 0
-      return true
-    else
-      return false
+      true
     end
   end
   

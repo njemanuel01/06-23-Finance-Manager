@@ -7,12 +7,9 @@ module DatabaseClassMethod
   #
   # Returns those rows as an Array of objects of the calling class
   def all
-    table_name = self.to_s.pluralize.underscore
-    
-    results = CONNECTION.execute("SELECT * FROM #{table_name}")
     results_as_objects = []
-    results.each do |results_hash|
-      results_as_objects << self.new(results_hash)
+    CONNECTION.execute("SELECT * FROM #{self.to_s.pluralize.underscore}").each do |results|
+      results_as_objects << self.new(results)
     end
     
     return results_as_objects
@@ -24,9 +21,7 @@ module DatabaseClassMethod
   #
   # Returns the row as an object of the calling class
   def find(id)
-    table_name = self.to_s.pluralize.underscore
-    
-    result = CONNECTION.execute("SELECT * FROM '#{table_name}' WHERE id = ?;", id).first
+    result = CONNECTION.execute("SELECT * FROM '#{self.to_s.pluralize.underscore}' WHERE id = ?;", id).first
     
     self.new(result)
   end
@@ -38,11 +33,9 @@ module DatabaseClassMethod
   #
   # Returns the rows as an Array of objects of the calling class
   def where(column_name, value)
-    table_name = self.to_s.pluralize.underscore
-    results = CONNECTION.execute("SELECT * FROM #{table_name} WHERE #{column_name} = ?;", value)
     results_as_objects = []
-    results.each do |results_hash|
-      results_as_objects << self.new(results_hash)
+    CONNECTION.execute("SELECT * FROM #{self.to_s.pluralize.underscore} WHERE #{column_name} = ?;", value).each do |results|
+      results_as_objects << self.new(results)
     end
     
     return results_as_objects
@@ -54,16 +47,14 @@ module DatabaseClassMethod
   #
   # Returns an object of the calling class
   def add(values_hash = {}) #values_hash = {}
-      table_name = self.to_s.pluralize.underscore
+    columns = values_hash.keys
+    values = values_hash.values
+    CONNECTION.execute("INSERT INTO #{self.to_s.pluralize.underscore} (#{columns.join ", "}) VALUES (#{values.to_s[1...-1]});")
 
-      columns = values_hash.keys
-      values = values_hash.values
-      CONNECTION.execute("INSERT INTO #{table_name} (#{columns.join ", "}) VALUES (#{values.to_s[1...-1]});")
-
-      id = CONNECTION.last_insert_row_id
-      values_hash["id"] = id
+    id = CONNECTION.last_insert_row_id
+    values_hash["id"] = id
       
-      self.new(values_hash)
+    self.new(values_hash)
   end
   
 end

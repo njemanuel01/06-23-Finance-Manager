@@ -8,9 +8,7 @@ module DatabaseInstanceMethod
   #
   # Retuns either a string or integer
   def get(field)
-    table_name = self.class.to_s.pluralize.underscore
-    
-    result = CONNECTION.execute("SELECT * FROM '#{table_name}' WHERE id = ?;", @id).first
+    result = CONNECTION.execute("SELECT * FROM '#{self.class.to_s.pluralize.underscore}' WHERE id = ?;", @id).first
     result[field]
   end
   
@@ -18,25 +16,27 @@ module DatabaseInstanceMethod
   #
   # Returns a string.
   def save
-    table_name = self.class.to_s.pluralize.underscore
-    
-    hash = {}
+    hash = attr_hash
+    sql_hash = hash.to_s.delete "\>"
+
+    CONNECTION.execute("UPDATE '#{self.class.to_s.pluralize.underscore}' SET #{sql_hash[1...-1]} WHERE id = ?;", @id)
+    "Saved."
+  end
+  
+  # Creates a Hash from the instances attributes
+  #
+  # Returns a Hash
+  def attr_hash
     self.instance_variables.each {|var| hash[var.to_s.delete("@")] = self.instance_variable_get(var) }
     hash.delete("id")
     hash.delete("errors")
-    sql_hash = hash.to_s.delete "\>"
-
-    CONNECTION.execute("UPDATE '#{table_name}' SET #{sql_hash[1...-1]} WHERE id = ?;", @id)
-    "Saved."
   end
   
   # Deletes a row from a table
   #
   # Returns a string.
   def delete
-    table_name = self.class.to_s.pluralize.underscore
-    
-    CONNECTION.execute("DELETE FROM '#{table_name}' WHERE id = ?;", @id)
+    CONNECTION.execute("DELETE FROM '#{self.class.to_s.pluralize.underscore}' WHERE id = ?;", @id)
     "Deleted."
   end
   
@@ -44,17 +44,12 @@ module DatabaseInstanceMethod
   #
   # Returns a Boolean.
   def add_to_database
-    table_name = self.class.to_s.pluralize.underscore
-    
-    hash = {}
-    self.instance_variables.each {|var| hash[var.to_s.delete("@")] = self.instance_variable_get(var) }
-    hash.delete("id")
-    hash.delete("errors")
+    hash = attr_hash
     
     columns = hash.keys
     values = hash.values
     if self.valid?
-      CONNECTION.execute("INSERT INTO #{table_name} (#{columns.join ", "}) VALUES (#{values.to_s[1...-1]});")
+      CONNECTION.execute("INSERT INTO #{self.class.to_s.pluralize.underscore} (#{columns.join ", "}) VALUES (#{values.to_s[1...-1]});")
       @id = CONNECTION.last_insert_row_id
     else
       false
