@@ -4,7 +4,7 @@ require_relative "../models/transaction.rb"
 class TransactionTest < Minitest::Test
   #test the valid? method returns a correct boolean
   def test_valid?
-    test = Account.new({"amount" => 1})
+    test = Transaction.new({"amount" => 1})
     assert(test.valid?)
   end
 end
