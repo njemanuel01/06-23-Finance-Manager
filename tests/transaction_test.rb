@@ -1,6 +1,10 @@
 require "minitest/autorun"
-require_relative "../models/category.rb"
+require_relative "../models/transaction.rb"
 
-class CategoryTest < Minitest::Test
-  
+class TransactionTest < Minitest::Test
+  #test the valid? method returns a correct boolean
+  def test_valid?
+    test = Account.new({"amount" => 1})
+    assert(test.valid?)
+  end
 end
