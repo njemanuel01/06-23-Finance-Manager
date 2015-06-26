@@ -26,13 +26,8 @@ class Account
   #
   # Returns an Array of integers
   def users
-    user_array = []
-    db_array = CONNECTION.execute("SELECT user_id FROM accounts_users WHERE account_id = ?;", @id)
-    db_array.each do |x|
-      user_array << x["user_id"]
-    end
-    
-    return user_array
+    CONNECTION.execute("SELECT users.id, users.name FROM accounts_users 
+    JOIN users ON accounts_users.user_id = users.id WHERE accounts_users.account_id = ?;", @id)
   end
   
   # Deletes rows in accounts_users associated with the account

@@ -3,7 +3,18 @@
 <h3>Account Type</h3>
 <p><%= @account.type %></p>
 <h3>Account users</h3>
-<p><%= @account.users %></p>
+<table>
+  <tr>
+    <td>User #</td>
+    <td>User Name</td>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><a href="/single_user/<%= user["id"] %>"><%= user["id"] %></a></td>
+    <td><%= user["name"]%></td>
+  </tr>
+  <% end %>
+</table>
 <h3>Account Balance</h3>
 <p><%= @account.balance %></p>
 

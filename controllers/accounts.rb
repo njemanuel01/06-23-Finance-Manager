@@ -29,6 +29,7 @@ end
 # Get information on a single user
 get "/single_account/:id" do
   @account = Account.find(params["id"])
+  @users = @account.users
   erb :"accounts/account_single"
 end
 
