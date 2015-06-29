@@ -52,10 +52,9 @@ module DatabaseClassMethod
   #
   # Returns the rows as an Array of objects of the calling class
   def where(column_name, value)
-    results_as_objects = []
-    result = CONNECTION.execute("SELECT * FROM #{tablename} WHERE #{column_name} = ?;", value)
+    results = CONNECTION.execute("SELECT * FROM #{tablename} WHERE #{column_name} = ?;", value)
     
-    self.results_as_objects(results)
+    return self.results_as_objects(results)
   end
   
   # Inserts a row into a table

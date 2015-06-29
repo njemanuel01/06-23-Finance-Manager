@@ -36,6 +36,10 @@ body a {
   padding: 10px;
 }
 
+form {
+  padding: 10px;
+}
+
 ul {
   padding: 0px;
   background-color: #69B5FF;
@@ -50,7 +54,15 @@ li {
   padding: 10px;
 }
 
+li a:hover {
+  background-color: #A1FAF8;
+}
+
 a {
   cursor: pointer;
   color: #3B48CB;
+}
+
+a:hover {
+  background-color: #69B5FF;
 }
