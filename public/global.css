@@ -9,16 +9,18 @@ html {
 
 body {
   margin: 0px;
-  background-color: lightsteelblue;
+  background-color: #A1FAF8;
 }
 
 body h1 {
   text-align: center;
   padding: 10px;
+  color: #566FEE;
 }
 
 body h3 {
   text-indent: 10px;
+  color: #566FEE;
 }
 
 body table {
@@ -36,12 +38,12 @@ body a {
 
 ul {
   padding: 0px;
-  background-color: grey;
+  background-color: #69B5FF;
   list-style-type: none;
 }
 
 li {
-  border-color: black;
+  border-color: #3B48CB;
   border-style: solid;
   border-width: thin;
   text-align: center;
@@ -50,4 +52,5 @@ li {
 
 a {
   cursor: pointer;
+  color: #3B48CB;
 }
