@@ -14,11 +14,19 @@ body {
 
 body h1 {
   text-align: center;
-  padding: 20px;
+  padding: 10px;
+}
+
+body h3 {
+  text-indent: 10px;
+}
+
+body table {
+  text-indent: 10px;
 }
 
 body p {
-  padding: 10px;
+  text-indent: 10px;
   line-height: 5px;
 }
 
@@ -37,6 +45,7 @@ li {
   border-style: solid;
   border-width: thin;
   text-align: center;
+  padding: 10px;
 }
 
 a {
