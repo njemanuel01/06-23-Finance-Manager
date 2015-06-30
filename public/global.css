@@ -9,18 +9,18 @@ html {
 
 body {
   margin: 0px;
-  background-color: #A1FAF8;
+  background-color: #CFD8D5;
 }
 
 body h1 {
   text-align: center;
   padding: 10px;
-  color: #566FEE;
+  color: #5A5967;
 }
 
 body h3 {
   text-indent: 10px;
-  color: #566FEE;
+  color: #5A5967;
 }
 
 body table {
@@ -30,6 +30,7 @@ body table {
 body p {
   text-indent: 10px;
   line-height: 5px;
+  color: #5A5967;
 }
 
 body a {
@@ -42,12 +43,12 @@ form {
 
 ul {
   padding: 0px;
-  background-color: #69B5FF;
+  background-color: #A7A599;
   list-style-type: none;
 }
 
 li {
-  border-color: #3B48CB;
+  border-color: #5A5967;
   border-style: solid;
   border-width: thin;
   text-align: center;
@@ -55,15 +56,15 @@ li {
 }
 
 li a:hover {
-  background-color: #A1FAF8;
+  background-color: #817F76;
 }
 
 a {
   cursor: pointer;
   display: block;
-  color: #3B48CB;
+  color: #35324F;
 }
 
 a:hover {
-  background-color: #69B5FF;
+  background-color: #817F76;
 }
