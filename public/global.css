@@ -68,3 +68,10 @@ a {
 a:hover {
   background-color: #817F76;
 }
+
+@media (min-width: 550px) {
+  .menu {
+    float: left;
+    width: 25%;
+  }
+}
