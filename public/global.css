@@ -82,19 +82,16 @@ body a:hover {
   width: 40px;
 }
 
-#hamburger_menu ul {
+#hamburger_list {
   position: absolute;
   right: 40px;
   width: 100px;
   margin-top: 0px;
+  top: -20px;
 }
 
 .hide {
   display: none;
-}
-
-.show {
-  display: inline;
 }
 
 @media (min-width: 500px) {
