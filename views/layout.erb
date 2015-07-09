@@ -4,7 +4,30 @@
     <title>Finance Manager</title>
     <link rel="stylesheet" href="/global.css">
   </head>
-  
+  <header>
+    <div id="hamburger_menu">
+      <img id ="hamburger" src="https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png" alt="Hamburger Icon">
+      <ul class="hide">
+        <li><a href="/users_menu">Users</a></li>
+        <li><a href="/accounts_menu">Accounts</a></li>
+        <li><a href="/categories_menu">Categories</a></li>
+        <li><a href="/transactions_menu">Transactions</a></li>
+        <li><a href="/stock">Stocks</a></li>
+      </ul>
+      <div style="clear: both"></div>
+    </div>
+    <div id="barnav">
+      <nav>
+        <ul>
+          <li><a href="/users_menu">Users</a></li>
+          <li><a href="/accounts_menu">Accounts</a></li>
+          <li><a href="/categories_menu">Categories</a></li>
+          <li><a href="/transactions_menu">Transactions</a></li>
+          <li><a href="/stock">Stocks</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
   <body>
     <%= yield %>
   </body>

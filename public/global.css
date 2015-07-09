@@ -3,6 +3,10 @@ html {
   box-sizing: border-box;
 }
 
+#barnav {
+  display: none;
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -41,13 +45,13 @@ form {
   padding: 10px;
 }
 
-ul {
+body ul {
   padding: 0px;
   background-color: #A7A599;
   list-style-type: none;
 }
 
-li {
+body li {
   border-color: #5A5967;
   border-style: solid;
   border-width: thin;
@@ -55,23 +59,60 @@ li {
   padding: 5px;
 }
 
-li a:hover {
+body li a:hover {
   background-color: #817F76;
 }
 
-a {
+body a {
   cursor: pointer;
   display: block;
   color: #35324F;
 }
 
-a:hover {
+body a:hover {
   background-color: #817F76;
 }
 
-@media (min-width: 550px) {
+#hamburger_menu {
+  background-color: #A7A599;
+}
+
+#hamburger_menu img {
+  float: right;
+  width: 40px;
+}
+
+#hamburger_menu ul {
+  position: absolute;
+  right: 40px;
+  width: 100px;
+  margin-top: 0px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: inline;
+}
+
+@media (min-width: 500px) {
   .menu {
     float: left;
     width: 25%;
+  }
+  
+  #hamburger_menu {
+    display: none;
+  }
+  
+  #barnav {
+    display: inline;
+  }
+  header li {
+    width: 20%;
+    float: left;
+    background-color: #A7A599;
   }
 }
