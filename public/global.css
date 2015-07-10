@@ -56,6 +56,10 @@ body ul {
   margin-top: 0px;
 }
 
+.menu ul {
+  background-color: grey;
+}
+
 body li {
   border-color: #5A5967;
   border-style: solid;
