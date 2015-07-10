@@ -1,5 +1,14 @@
 <h1>Please select the account you wish to update.</h1>
 
+<div class="menu">
+  <ul>
+    <li><a href="/new_account">Create an account.</a></li>
+    <li><a href="/all_accounts">See a list of accounts and information on them.</a></li>
+    <li><a href="/update_account_form">Update an account</a></li>
+    <li><a href="/delete_account_list">Delete an account</a></li>
+  </ul>
+</div>
+
 <form action="/update_account_form_do">
   <select name ="account[id]">
     <% Account.all.each do |account| %> 
@@ -14,7 +23,5 @@
   <input type='submit'>
 </form>
 <br>
-<a href="/users_menu">Users Menu?</a></b>
-<a href="/home">Main Menu?</a>
 
 

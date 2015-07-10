@@ -1,10 +1,17 @@
 <h1>Here's a list of all accounts. Click on an account to see it's full details.</h1>
 
+
+<div class="menu">
+  <ul>
+    <li><a href="/new_account">Create an account.</a></li>
+    <li><a href="/all_accounts">See a list of accounts and information on them.</a></li>
+    <li><a href="/update_account_form">Update an account</a></li>
+    <li><a href="/delete_account_list">Delete an account</a></li>
+  </ul>
+</div>
+
 <ul>
   <% Account.all.each do |account| %>
     <li><a href="/single_account/<%=account.id%>"><%= account.id %> - <%= account.type %></a></li>
   <% end %>
 </ul>
-
-<a href="/accounts_menu">Accounts Menu?</a></b>
-<a href="/home">Main Menu?</a>

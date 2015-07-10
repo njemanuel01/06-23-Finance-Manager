@@ -3,17 +3,18 @@ html {
   box-sizing: border-box;
 }
 
-#barnav {
-  display: none;
-}
-
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+#barnav {
+  display: none;
 }
 
 body {
   margin: 0px;
   background-color: #CFD8D5;
+  cursor: grab;
 }
 
 body h1 {
@@ -49,6 +50,7 @@ body ul {
   padding: 0px;
   background-color: #A7A599;
   list-style-type: none;
+  margin-top: 0px;
 }
 
 body li {
@@ -87,7 +89,6 @@ body a:hover {
   right: 40px;
   width: 100px;
   margin-top: 0px;
-  top: -20px;
 }
 
 .hide {
@@ -98,6 +99,7 @@ body a:hover {
   .menu {
     float: left;
     width: 25%;
+    margin-right: 10px;
   }
   
   #hamburger_menu {
@@ -107,6 +109,7 @@ body a:hover {
   #barnav {
     display: inline;
   }
+  
   header li {
     width: 20%;
     float: left;
