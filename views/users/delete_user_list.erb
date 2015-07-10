@@ -11,6 +11,7 @@
   </ul>
 </div>
 
+<div class="content">
 <form action="/delete_user">
   <select name ="user[id]">
     <% User.all.each do |user| %> 
@@ -19,3 +20,6 @@
   </select>
   <input type='submit'>
 </form>
+</div>
+
+<div style="clear: both"></div>

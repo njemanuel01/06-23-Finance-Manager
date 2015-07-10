@@ -10,23 +10,25 @@
   </ul>
 </div>
 
-<form action="/where">
-  <select name ="id">
-    <% Account.all.each do |account| %> 
-      <option value="<%= account.id %>"><%= account.id %></option>
-    <% end %>
-  </select>
-  <input type="submit">
-</form>
-
-<% if params["id"]%>
-  <h1>Here they are. Click on a transaction to see it's full details.'</h1>
-
-  <ul>  
-    <% Transaction.where("account_id", params["id"]).each do |transaction| %>
-      <li><a href="/single_transaction/<%=transaction.id%>"><%= transaction.id %> - <%= transaction.amount%> - <%= transaction.date%> - <%= transaction.description%></li>
+<div class="content">
+  <form action="/where">
+    <select name ="id">
+      <% Account.all.each do |account| %> 
+        <option value="<%= account.id %>"><%= account.id %></option>
       <% end %>
-  </ul>
-<% end %>
+    </select>
+    <input type="submit">
+  </form>
+
+  <% if params["id"]%>
+    <h1>Here they are. Click on a transaction to see it's full details.'</h1>
+
+    <ul>  
+      <% Transaction.where("account_id", params["id"]).each do |transaction| %>
+        <li><a href="/single_transaction/<%=transaction.id%>"><%= transaction.id %> - <%= transaction.amount%> - <%= transaction.date%> - <%= transaction.description%></li>
+        <% end %>
+    </ul>
+  <% end %>
+</div>
 
 <div style="clear: both"></div>

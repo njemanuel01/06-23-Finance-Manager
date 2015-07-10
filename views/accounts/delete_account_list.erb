@@ -1,4 +1,4 @@
-<h3 class="error"><%= @message %></h3>
+<h3 class="errors"><%= @message %></h3>
 
 <h1>Please select an account to delete.  It can only be deleted if there is no balance.</h1>
 
@@ -11,14 +11,16 @@
   </ul>
 </div>
 
-<form action="/delete_account">
-  <select name ="account[id]">
-    <% Account.all.each do |account| %> 
-      <option value="<%= account.id %>"><%= account.id %></option>
-    <% end %>
-  </select>
-  <input type='submit'>
-</form>
+<div class="content">
+  <form action="/delete_account">
+    <select name ="account[id]">
+      <% Account.all.each do |account| %> 
+        <option value="<%= account.id %>"><%= account.id %></option>
+      <% end %>
+    </select>
+    <input type='submit'>
+  </form>
+</div>
 
 
 <div style="clear: both"></div>

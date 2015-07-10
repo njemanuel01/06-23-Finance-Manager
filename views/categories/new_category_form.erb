@@ -10,14 +10,15 @@
   </ul>
 </div>
 
-<form action="/new_category_form_do">
-  <input type='text' placeholder='New Category Name' name="category[name]" 
-  <% if params["category"]%>
-  value="<%=params["category"]["name"]%>"
-  <% end %>>
-  <input type='submit'>
-</form>
-
+<div class="content">
+  <form action="/new_category_form_do">
+    <input type='text' placeholder='New Category Name' name="category[name]" 
+    <% if params["category"]%>
+    value="<%=params["category"]["name"]%>"
+    <% end %>>
+    <input type='submit'>
+  </form>
+</div>
 
 <div style="clear: both"></div>
 

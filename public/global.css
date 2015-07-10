@@ -41,8 +41,6 @@ body table {
 }
 
 body p {
-  text-indent: 10px;
-  line-height: 5px;
   color: #5A5967;
 }
 
@@ -119,6 +117,11 @@ body a:hover {
     line-height: 10px;
   }
   
+  .content {
+    float: left;
+    width: 65%;
+  }
+  
   #hamburger_menu {
     display: none;
   }
@@ -131,5 +134,9 @@ body a:hover {
     width: 20%;
     float: left;
     background-color: #A7A599;
+  }
+  
+  body a {
+    line-height: 16px;
   }
 }

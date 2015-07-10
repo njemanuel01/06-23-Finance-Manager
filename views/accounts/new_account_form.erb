@@ -9,31 +9,33 @@
   </ul>
 </div>
 
-<form action="/new_account_form_do">
-  <select name ="account[type]">
-    <option value="Checking">Checking</option>
-    <option value="Savings">Savings</option>
-  </select>
+<div class="content">
+  <form action="/new_account_form_do">
+    <select name ="account[type]">
+      <option value="Checking">Checking</option>
+      <option value="Savings">Savings</option>
+    </select>
   
-  <p>Which users have access to this account? (up to three)</p>
-  <select name ="account[id1]">
-    <% User.all.each do |user| %> 
-      <option value="<%= user.id %>"><%= user.name %></option>
-    <% end %>
-  </select>
-  <select name ="account[id2]">
-    <option value="blank"></option>
-    <% User.all.each do |user| %> 
-      <option value="<%= user.id %>"><%= user.name %></option>
-    <% end %>
-  </select>
-  <select name ="account[id3]">
-    <option value="blank"></option>
-    <% User.all.each do |user| %> 
-      <option value="<%= user.id %>"><%= user.name %></option>
-    <% end %>
-  </select>
-  <input type='submit'>
-</form>
+    <p>Which users have access to this account? (up to three)</p>
+    <select name ="account[id1]">
+      <% User.all.each do |user| %> 
+        <option value="<%= user.id %>"><%= user.name %></option>
+      <% end %>
+    </select>
+    <select name ="account[id2]">
+      <option value="blank"></option>
+      <% User.all.each do |user| %> 
+        <option value="<%= user.id %>"><%= user.name %></option>
+      <% end %>
+    </select>
+    <select name ="account[id3]">
+      <option value="blank"></option>
+      <% User.all.each do |user| %> 
+        <option value="<%= user.id %>"><%= user.name %></option>
+      <% end %>
+    </select>
+    <input type='submit'>
+  </form>
+</div>
 
 <div style="clear: both"></div>

@@ -8,12 +8,12 @@
   </ul>
 </div>
 
-
-<ul>
-  <% Category.all.each do |category| %>
-    <li><%= category.id %> - <%= category.name %></a></li>
-  <% end %>
-</ul>
-
+<div class="content">
+  <ul>
+    <% Category.all.each do |category| %>
+      <li><%= category.id %> - <%= category.name %></a></li>
+    <% end %>
+  </ul>
+</div>
 <div style="clear: both"></div>
 

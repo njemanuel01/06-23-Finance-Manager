@@ -9,15 +9,16 @@
   </ul>
 </div>
 
-<form action="/delete_transaction">
-  <select name ="transaction[id]">
-    <% Transaction.all.each do |transaction| %> 
-      <option value="<%= transaction.id %>"><%= transaction.amount %> - <%= transaction.date%> - 
-        <%= transaction.description %></option>
-    <% end %>
-  </select>
-  <input type='submit'>
-</form>
-<br>
+<div class="content">
+  <form action="/delete_transaction">
+    <select name ="transaction[id]">
+      <% Transaction.all.each do |transaction| %> 
+        <option value="<%= transaction.id %>"><%= transaction.amount %> - <%= transaction.date%> - 
+          <%= transaction.description %></option>
+      <% end %>
+    </select>
+    <input type='submit'>
+  </form>
+</div
 
 <div style="clear: both"></div>

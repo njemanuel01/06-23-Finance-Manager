@@ -10,11 +10,13 @@
   </ul>
 </div>
 
-<ul>
-  <% Transaction.all.each do |transaction| %>
-    <li><a href="/single_transaction/<%=transaction.id%>"><%= transaction.id %> - <%= transaction.amount %> - 
-      <%= transaction.date %></a></li>
-  <% end %>
-</ul>
+<div class="content">
+  <ul>
+    <% Transaction.all.each do |transaction| %>
+      <li><a href="/single_transaction/<%=transaction.id%>"><%= transaction.id %> - <%= transaction.amount %> - 
+        <%= transaction.date %></a></li>
+    <% end %>
+  </ul>
+</div>
 
 <div style="clear: both"></div>

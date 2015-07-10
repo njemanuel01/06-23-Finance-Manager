@@ -12,26 +12,28 @@
   </ul>
 </div>
 
-<form action="/new_transaction_form_do">
-  <p>Enter the amount as either a credit or debit.</p>
-  <input type='text' placeholder='Ex. 12.12 for credits, -12.12 for debits' name="transaction[amount]">
-  <p>Enter a description for the transaction</p>
-  <input type='text' placeholder='Description' name="transaction[description]">
-  <p>Enter the date of the transaction.</p>
-  <input type='text' placeholder='Ex. 06-01-2015' name="transaction[date]">
-  <p>Enter the category for the transaction</p>
-  <select name ="transaction[category_id]">
-    <% Category.all.each do |category| %> 
-      <option value="<%= category.id %>"><%= category.name %></option>
-    <% end %>
-  </select>
-  <p>Enter the account for the transaction</p>
-  <select name ="transaction[account_id]">
-    <% Account.all.each do |account| %> 
-      <option value="<%= account.id %>"><%= account.id %></option>
-    <% end %>
-  </select>
-  <input type='submit'>
-</form>
+<div class="content">
+  <form action="/new_transaction_form_do">
+    <p>Enter the amount as either a credit or debit.</p>
+    <input type='text' placeholder='Ex. 12.12 for credits, -12.12 for debits' name="transaction[amount]">
+    <p>Enter a description for the transaction</p>
+    <input type='text' placeholder='Description' name="transaction[description]">
+    <p>Enter the date of the transaction.</p>
+    <input type='text' placeholder='Ex. 06-01-2015' name="transaction[date]">
+    <p>Enter the category for the transaction</p>
+    <select name ="transaction[category_id]">
+      <% Category.all.each do |category| %> 
+        <option value="<%= category.id %>"><%= category.name %></option>
+      <% end %>
+    </select>
+    <p>Enter the account for the transaction</p>
+    <select name ="transaction[account_id]">
+      <% Account.all.each do |account| %> 
+        <option value="<%= account.id %>"><%= account.id %></option>
+      <% end %>
+    </select>
+    <input type='submit'>
+  </form>
+</div>
 
 <div style="clear: both"></div>

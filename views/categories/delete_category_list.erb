@@ -10,14 +10,15 @@
   </ul>
 </div>
 
-<form action="/delete_category">
-  <select name ="category[id]">
-    <% Category.all.each do |category| %> 
-      <option value="<%= category.id %>"><%= category.name %></option>
-    <% end %>
-  </select>
-  <input type='submit'>
-</form>
-
+<div class="content">
+  <form action="/delete_category">
+    <select name ="category[id]">
+      <% Category.all.each do |category| %> 
+        <option value="<%= category.id %>"><%= category.name %></option>
+      <% end %>
+    </select>
+    <input type='submit'>
+  </form>
+</div>
 
 <div style="clear: both"></div>

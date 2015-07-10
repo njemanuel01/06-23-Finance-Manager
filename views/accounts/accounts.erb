@@ -10,10 +10,12 @@
   </ul>
 </div>
 
-<ul>
-  <% Account.all.each do |account| %>
-    <li><a href="/single_account/<%=account.id%>"><%= account.id %> - <%= account.type %></a></li>
-  <% end %>
-</ul>
+<div class="content">
+  <ul>
+    <% Account.all.each do |account| %>
+      <li><a href="/single_account/<%=account.id%>"><%= account.id %> - <%= account.type %></a></li>
+    <% end %>
+  </ul>
+</div>
 
 <div style="clear: both"></div>

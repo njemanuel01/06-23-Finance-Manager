@@ -10,10 +10,11 @@
   </ul>
 </div>
 
-<ul>
-  <% User.all.each do |user| %>
-    <li><a href="/single_user/<%=user.id%>"><%= user.id %> - <%= user.name %></a></li>
-  <% end %>
-</ul>
-
+<div class="content">
+  <ul>
+    <% User.all.each do |user| %>
+      <li><a href="/single_user/<%=user.id%>"><%= user.id %> - <%= user.name %></a></li>
+    <% end %>
+  </ul>
+</div>
 <div style="clear: both"></div>
