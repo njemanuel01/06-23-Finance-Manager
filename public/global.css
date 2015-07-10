@@ -10,8 +10,13 @@ html {
 .errors {
   color: red;
 }
+
 #barnav {
   display: none;
+}
+
+#barnav ul {
+  line-height: 5px;
 }
 
 body {
@@ -58,6 +63,7 @@ body ul {
 
 .menu ul {
   background-color: grey;
+  line-height: 0px;
 }
 
 body li {
@@ -109,15 +115,19 @@ body a:hover {
     margin-right: 10px;
   }
   
+  .menu ul {
+    line-height: 10px;
+  }
+  
   #hamburger_menu {
     display: none;
   }
   
   #barnav {
-    display: inline;
+    display: block;
   }
   
-  header li {
+  #barnav li {
     width: 20%;
     float: left;
     background-color: #A7A599;
