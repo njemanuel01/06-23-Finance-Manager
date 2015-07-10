@@ -7,6 +7,9 @@ html {
   box-sizing: inherit;
 }
 
+.errors {
+  color: red;
+}
 #barnav {
   display: none;
 }
