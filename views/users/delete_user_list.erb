@@ -1,4 +1,13 @@
-<h3><%= @message %></h3>
+<h3 class="errors"><%= @message %></h3>
+
+<div class="menu">
+  <ul>
+    <li><a href="/new_user">Create a user</a></li>
+    <li><a href="/all_users">See a list of users and information on them.</a></li>
+    <li><a href="/update_user_form">Update a user's name</a></li>
+    <li><a href="/delete_user_list">Delete a user</a></li>
+  </ul>
+</div>
 
 <h1>Please select a user to delete.  They can only be deleted if there are not accounts associated with them.</h1>
 <form action="/delete_user">
@@ -9,6 +18,3 @@
   </select>
   <input type='submit'>
 </form>
-<br>
-<a href="/users_menu">Users Menu?</a></b>
-<a href="/home">Main Menu?</a>

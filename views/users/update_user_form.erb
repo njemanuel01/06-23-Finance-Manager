@@ -1,5 +1,14 @@
 <h1>Please select the user you wish to update.</h1>
 
+
+<div class="menu">
+  <ul>
+    <li><a href="/new_user">Create a user</a></li>
+    <li><a href="/all_users">See a list of users and information on them.</a></li>
+    <li><a href="/update_user_form">Update a user's name</a></li>
+    <li><a href="/delete_user_list">Delete a user</a></li>
+  </ul>
+</div>
 <form action="/update_user_form_do">
   <select name ="user[id]">
     <% User.all.each do |user| %> 
@@ -10,7 +19,5 @@
   <input type="text" placeholder="Update name" name="user[name]">
   <input type='submit'>
 </form>
-<br>
-<a href="/users_menu">Users Menu?</a></b>
-<a href="/home">Main Menu?</a>
+
 

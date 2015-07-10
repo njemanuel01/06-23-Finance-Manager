@@ -1,10 +1,17 @@
 <h1>Here's a list of all users. Click on a user to see their full details.</h1>
 
+
+<div class="menu">
+  <ul>
+    <li><a href="/new_user">Create a user</a></li>
+    <li><a href="/all_users">See a list of users and information on them.</a></li>
+    <li><a href="/update_user_form">Update a user's name</a></li>
+    <li><a href="/delete_user_list">Delete a user</a></li>
+  </ul>
+</div>
+
 <ul>
   <% User.all.each do |user| %>
     <li><a href="/single_user/<%=user.id%>"><%= user.id %> - <%= user.name %></a></li>
   <% end %>
 </ul>
-
-<a href="/users_menu">Users Menu?</a></b>
-<a href="/home">Main Menu?</a>
