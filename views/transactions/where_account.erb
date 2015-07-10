@@ -1,5 +1,15 @@
 <h1>Which account do you want to see a list of transactions for?</h1>
 
+<div class="menu">
+  <ul>
+    <li><a href="/new_transaction">Create a transaction</a></li>
+    <li><a href="/all_transactions">See a list of all transactions and information on them.</a></li>
+    <li><a href="/where">See a list of transactions for a specific account</a></li>
+    <li><a href="/update_transaction_form">Update a transaction's information</a></li>
+    <li><a href="/delete_transaction_list">Delete a transaction</a></li>
+  </ul>
+</div>
+
 <form action="/where">
   <select name ="id">
     <% Account.all.each do |account| %> 
@@ -19,5 +29,3 @@
   </ul>
 <% end %>
 <br>
-<a href="/transactions_menu">Transactions Menu?</a></b>
-<a href="/home">Main Menu?</a>

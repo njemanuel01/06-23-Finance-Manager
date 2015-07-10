@@ -1,6 +1,16 @@
-<h3><%= @errors %></h3>
+<h3 class="errors"><%= @errors %></h3>
 
 <h1>Enter the information for the transaction.</h1>
+
+<div class="menu">
+  <ul>
+    <li><a href="/new_transaction">Create a transaction</a></li>
+    <li><a href="/all_transactions">See a list of all transactions and information on them.</a></li>
+    <li><a href="/where">See a list of transactions for a specific account</a></li>
+    <li><a href="/update_transaction_form">Update a transaction's information</a></li>
+    <li><a href="/delete_transaction_list">Delete a transaction</a></li>
+  </ul>
+</div>
 
 <form action="/new_transaction_form_do">
   <p>Enter the amount as either a credit or debit.</p>
@@ -24,5 +34,3 @@
   <input type='submit'>
 </form>
 <br>
-<a href="/transactions_menu">Transactions Menu?</a></b>
-<a href="/home">Main Menu?</a>
