@@ -1,4 +1,3 @@
-
 class Stock
   attr_reader :name, :bid, :change, :change_percent, :day_range
   # Creates a new Stock object
