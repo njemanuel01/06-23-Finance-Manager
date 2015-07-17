@@ -2,6 +2,10 @@ require "pry"
 require "sinatra"
 require "sinatra/reloader"
 set :server, 'webrick'
+require "rubygems"
+require "bunder/setup"
+
+require "stock_quote"
 
 # SQL/Database
 require "sqlite3"
