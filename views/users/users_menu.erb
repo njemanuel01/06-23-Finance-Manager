@@ -1,10 +1,12 @@
-<h1>What would you like to do in users?</h1>
+<h1>Your Information</h1>
 <div class="menu">
   <ul>
-    <li><a href="/new_user">Create a user</a></li>
-    <li><a href="/all_users">See a list of users and information on them.</a></li>
-    <li><a href="/update_user_form">Update a user's name</a></li>
-    <li><a href="/delete_user_list">Delete a user</a></li>
+    <li><a href="/update_email_form">Update your email</a></li>
+    <li><a href="/change_password_form">Change your password</a></li>
+    <li><a href="/delete_user">Remove yourself as a user</a></li>
   </ul>
 </div>
+<p><%= @errors %></p>
+<p><%=@user.email%></p>
+<p><%=@user.total_balance%></p>
 <div style="clear: both"></div>

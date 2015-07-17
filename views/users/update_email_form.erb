@@ -1,0 +1,19 @@
+<div class="menu">
+  <ul>
+    <li><a href="/update_email_form">Update your email</a></li>
+    <li><a href="/update_user_form">Update your information</a></li>
+    <li><a href="/delete_user_list">Remove yourself as a user</a></li>
+  </ul>
+</div>
+
+<div class="content">
+  <p><%= @errors %></p>
+  <form action="/update_email_form_do">
+    <p>Your new email address</p>
+    <input type="text" placeholder="Update email" name="user[email]">
+    <input type='submit'>
+  </form>
+</div>
+
+<div style="clear: both"></div>
+

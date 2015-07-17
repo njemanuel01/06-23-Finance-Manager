@@ -1,58 +1,55 @@
+def check_user
+  if session[:id] == nil
+    redirect "/"
+  end
+end 
 # Main menus for users
 get "/users_menu" do
+  check_user
+  @user = User.find(session["id"])
   erb :"users/users_menu"
 end
 
-# Create a new user
-get "/new_user" do
-  erb :"users/new_user_form"
-end
-
-# Add user to table
-get "/new_user_form_do" do
-  user = User.add({"name" => params["user"]["name"]})
-  
-  erb :"users/added"
-end
-
-# Get a list of all users and their total balances
-get "/all_users" do
-  erb :"users/users"
-end
-
-# Get information on a single user
-get "/single_user/:id" do
-  @user = User.find(params["id"])
-  @accounts = @user.accounts
-  erb :"users/user_single"
-end
-
 # Form to update user name with
-get "/update_user_form" do
-  erb :"users/update_user_form"
+get "/update_email_form" do
+  check_user
+  erb :"users/update_email_form"
 end
 
 # Save updates to table
-get "/update_user_form_do" do
-  user = User.find(params["user"]["id"])
-  user.name = params["user"]["name"]
+get "/update_email_form_do" do
+  check_user
+  user = User.find(session["id"])
+  user.email = params["user"]["name"]
+  if !user.valid?
+    @errors = "Email is already used."
+    return erb :"users/update_user_form"
+  end
   user.save
-  erb :"users/updated"
+  @errors = "Email updated"
+  redirect "/users_menu"
 end
 
-# Choose a user to delete
-get "/delete_user_list" do
-  erb :"users/delete_user_list"
+# Form to update user name with
+get "/update_password_form" do
+  check_user
+  erb :"users/update_password_form"
+end
+
+# Save updates to table
+get "/update_password_form_do" do
+  check_user
+  user = User.find(session["id"])
+  user.password = BCrypt::Password.create(params["user"]["password"])
+  user.save
+  @errors = "Password updated"
+  redirect "/users_menu"
 end
 
 # Deletes user from table
 get "/delete_user" do
-  user = User.find(params["user"]["id"])
-  if user.delete?
-    user.delete
-    erb :"users/deleted"
-  else
-    @message = "The user has accounts associated with it, it cannot be deleted."
-    erb :"users/delete_user_list"
-  end
+  check_user
+  user = User.find(session["id"])
+  user.delete
+  redirect "/"
 end

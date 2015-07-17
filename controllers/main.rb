@@ -1,4 +1,5 @@
 get "/" do
+  session["id"] = nil
   erb :"main/login"
 end
 
@@ -30,7 +31,6 @@ get "/new_user_form_do" do
     session[:id] = user.id
     return erb :"main/home"
   else
-    binding.pry
     @errors = "Email " + user.errors.messages[:email][0]
     erb :"main/new_user_form"
   end
