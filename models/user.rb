@@ -18,10 +18,11 @@ class User< ActiveRecord::Base
   #
   # Returns a Boolean.
   def valid_password?(password)
-    if !(BCrypt::Password.new(@password) == password)
-      @errors << "Login Failed."
+    binding.pry
+    if !(BCrypt::Password.new(self.password) == password)
+      errors.messages["login"] = "Login Failed."
     end
     
-    return @errors.empty?
+    return errors.messages.empty?
   end 
 end
