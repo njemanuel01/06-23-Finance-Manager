@@ -1,14 +1,16 @@
+require "rubygems"
+require "bundler/setup"
+
 require "pry"
+require "active_record"
 require "sinatra"
 require "sinatra/reloader"
 set :server, 'webrick'
-require "rubygems"
-require "bunder/setup"
+require "bcrypt"
 
 require "stock_quote"
 
 # SQL/Database
-require "sqlite3"
 require_relative "database_setup.rb"
 #
 # # Models

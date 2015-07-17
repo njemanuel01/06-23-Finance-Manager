@@ -1,13 +1,56 @@
-# Creates a connection to the finance database
-CONNECTION = SQLite3::Database.new("finance.db")
+configure :development do
+  require "sqlite3"
+  ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: "photo_storage.db")
+end
 
-# Makes tables
-CONNECTION.execute("CREATE TABLE IF NOT EXISTS 'users' (id INTEGER PRIMARY KEY, name TEXT)")
-CONNECTION.execute("CREATE TABLE IF NOT EXISTS 'accounts' (id INTEGER PRIMARY KEY, type TEXT NOT NULL, balance REAL NOT NULL)")
-CONNECTION.execute("CREATE TABLE IF NOT EXISTS 'accounts_users' (user_id INTEGER, account_id INTEGER)")
-CONNECTION.execute("CREATE TABLE IF NOT EXISTS 'categories' (id INTEGER PRIMARY KEY, name TEXT NOT NULL)")
-CONNECTION.execute("CREATE TABLE IF NOT EXISTS 'transactions' (id INTEGER PRIMARY KEY, amount REAL NOT NULL, description TEXT, 
-date TEXT NOT NULL, category_id INTEGER, account_id INTEGER)")
+configure :production do
+  require "pg"  
+  db = URI.parse(ENV['DATABASE_URL'])
 
-# Get resulst as an Array of Hashes
-CONNECTION.results_as_hash = true
+  ActiveRecord::Base.establish_connection(
+    :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+    :host     => db.host,
+    :username => db.user,
+    :password => db.password,
+    :database => db.path[1..-1],
+    :encoding => 'utf8'
+  )
+end
+
+# Database setup
+unless ActiveRecord::Base.connection.table_exists?(:users)
+  ActiveRecord::Base.connection.create_table :users do |t|
+    t.text :name
+    t.text :password
+  end  
+end
+
+unless ActiveRecord::Base.connection.table_exists?(:accounts)
+  ActiveRecord::Base.connection.create_table :accounts do |t|
+    t.text :name
+    t.float :balance
+  end  
+end
+
+unless ActiveRecord::Base.connection.table_exists?(:categories)
+  ActiveRecord::Base.connection.create_table :categories do |t|
+    t.text :name
+  end  
+end
+
+unless ActiveRecord::Base.connection.table_exists?(:transactions)
+  ActiveRecord::Base.connection.create_table :transactions do |t|
+    t.float :amount
+    t.text :description
+    t.text :date
+    t.integer :category_id
+    t.integer :account_id
+  end  
+end
+
+unless ActiveRecord::Base.connection.table_exists?(:accounts_users)
+  ActiveRecord::Base.connection.create_table :accounts_users do |t|
+    t.integer :account_id
+    t.integer :user_id
+  end  
+end
