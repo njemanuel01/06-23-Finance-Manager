@@ -29,3 +29,5 @@ require_relative "controllers/transactions.rb"
 require_relative "controllers/stocks.rb"
 
 enable :sessions
+
+binding.pry
