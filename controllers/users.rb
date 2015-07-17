@@ -20,10 +20,11 @@ end
 get "/update_email_form_do" do
   check_user
   user = User.find(session["id"])
-  user.email = params["user"]["name"]
+  user.email = params["user"]["email"]
+  binding.pry
   if !user.valid?
     @errors = "Email is already used."
-    return erb :"users/update_user_form"
+    return erb :"users/update_email_form"
   end
   user.save
   @errors = "Email updated"
@@ -31,7 +32,7 @@ get "/update_email_form_do" do
 end
 
 # Form to update user name with
-get "/update_password_form" do
+get "/change_password_form" do
   check_user
   erb :"users/update_password_form"
 end
