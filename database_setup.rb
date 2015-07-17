@@ -1,6 +1,6 @@
 configure :development do
   require "sqlite3"
-  ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: "photo_storage.db")
+  ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: "finance_manager.db")
 end
 
 configure :production do
@@ -20,7 +20,7 @@ end
 # Database setup
 unless ActiveRecord::Base.connection.table_exists?(:users)
   ActiveRecord::Base.connection.create_table :users do |t|
-    t.text :name
+    t.text :email
     t.text :password
   end  
 end

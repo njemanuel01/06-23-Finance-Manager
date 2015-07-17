@@ -1,5 +1,7 @@
-class User
-  has_and_belongs_to_many :accounts 
+class User< ActiveRecord::Base
+  has_and_belongs_to_many :accounts
+  validates :email, presence: true
+  validates :email, uniqueness: true 
   # Finds a users total balance across all accounts
   #
   # Returns a float
