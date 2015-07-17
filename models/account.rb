@@ -31,7 +31,7 @@ class Account< ActiveRecord::Base
   #
   # Returns a Boolean 
   def delete?
-    @balance == 0
+    self.balance == 0
   end
   
 end

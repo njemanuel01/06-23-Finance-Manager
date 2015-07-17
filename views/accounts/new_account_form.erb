@@ -3,35 +3,31 @@
 <div class="menu">
   <ul>
     <li><a href="/new_account">Create an account.</a></li>
-    <li><a href="/all_accounts">See a list of accounts and information on them.</a></li>
+    <li><a href="/all_accounts">See your accounts and information on them.</a></li>
     <li><a href="/update_account_form">Update an account</a></li>
     <li><a href="/delete_account_list">Delete an account</a></li>
   </ul>
 </div>
 
+<h3 id="errors"><%= @errors %></h3>
 <div class="content">
   <form action="/new_account_form_do">
-    <select name ="account[type]">
+    <select name ="account[name]">
       <option value="Checking">Checking</option>
       <option value="Savings">Savings</option>
     </select>
   
-    <p>Which users have access to this account? (up to three)</p>
-    <select name ="account[id1]">
-      <% User.all.each do |user| %> 
-        <option value="<%= user.id %>"><%= user.name %></option>
-      <% end %>
-    </select>
+    <p>Do additional users have access to this account?(Up to two additional)</p>
     <select name ="account[id2]">
       <option value="blank"></option>
       <% User.all.each do |user| %> 
-        <option value="<%= user.id %>"><%= user.name %></option>
+        <option value="<%= user.id %>"><%= user.email %></option>
       <% end %>
     </select>
     <select name ="account[id3]">
       <option value="blank"></option>
       <% User.all.each do |user| %> 
-        <option value="<%= user.id %>"><%= user.name %></option>
+        <option value="<%= user.id %>"><%= user.email %></option>
       <% end %>
     </select>
     <input type='submit'>

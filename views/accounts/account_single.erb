@@ -1,7 +1,7 @@
 <div class="menu">
   <ul>
     <li><a href="/new_account">Create an account.</a></li>
-    <li><a href="/all_accounts">See a list of accounts and information on them.</a></li>
+    <li><a href="/all_accounts">See your accounts and information on them.</a></li>
     <li><a href="/update_account_form">Update an account</a></li>
     <li><a href="/delete_account_list">Delete an account</a></li>
   </ul>
@@ -11,7 +11,7 @@
   <h3>Account ID #</h3>
   <p><%= @account.id %></p>
   <h3>Account Type</h3>
-  <p><%= @account.type %></p>
+  <p><%= @account.name %></p>
   <h3>Account users</h3>
   <table>
     <tr>
@@ -20,8 +20,8 @@
     </tr>
     <% @users.each do |user| %>
     <tr>
-      <td><a href="/single_user/<%= user["id"] %>"><%= user["id"] %></a></td>
-      <td><%= user["name"]%></td>
+      <td><%= user["id"] %></td>
+      <td><%= user["email"]%></td>
     </tr>
     <% end %>
   </table>

@@ -4,7 +4,7 @@
 <div class="menu">
   <ul>
     <li><a href="/new_account">Create an account.</a></li>
-    <li><a href="/all_accounts">See a list of accounts and information on them.</a></li>
+    <li><a href="/all_accounts">See your accounts and information on them.</a></li>
     <li><a href="/update_account_form">Update an account</a></li>
     <li><a href="/delete_account_list">Delete an account</a></li>
   </ul>
@@ -12,8 +12,8 @@
 
 <div class="content">
   <ul>
-    <% Account.all.each do |account| %>
-      <li><a href="/single_account/<%=account.id%>"><%= account.id %> - <%= account.type %></a></li>
+    <% @user.accounts.each do |account| %>
+      <li><a href="/single_account/<%=account.id%>"><%= account.id %> - <%= account.name %></a></li>
     <% end %>
   </ul>
 </div>
