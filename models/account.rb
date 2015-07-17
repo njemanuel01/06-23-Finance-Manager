@@ -1,6 +1,12 @@
 class Account< ActiveRecord::Base
   has_many :transactions
-  has_and_belongs_to_many :users 
+  has_and_belongs_to_many :users
+  
+  after_initialize :defaults
+
+  def defaults
+    self.balance ||= 0.0
+  end
   # Adds a transaction amount to the account balance
   #
   # amount - float value

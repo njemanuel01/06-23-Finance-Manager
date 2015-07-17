@@ -12,5 +12,16 @@ class User< ActiveRecord::Base
       total += account["balance"]
     end
     return total
+  end
+  
+  # Checks to see if the user has entered the correct password
+  #
+  # Returns a Boolean.
+  def valid_password?(password)
+    if !(BCrypt::Password.new(@password) == password)
+      @errors << "Login Failed."
+    end
+    
+    return @errors.empty?
   end 
 end
