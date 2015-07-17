@@ -27,3 +27,5 @@ require_relative "controllers/categories.rb"
 require_relative "controllers/users.rb"
 require_relative "controllers/transactions.rb"
 require_relative "controllers/stocks.rb"
+
+binding.pry
