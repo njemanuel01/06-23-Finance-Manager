@@ -11,6 +11,7 @@
 </div>
 
 <div class="content">
+  <h3 id="errors"><%=@errors%></h3>
   <form action="/update_transaction_form_do">
     <select name ="transaction[id]">
       <% @user.accounts.each do |account| %>
@@ -23,7 +24,7 @@
   
     <p>To update the transaction's amount, type here.</p>
     <input type="text" placeholder="Ex. 12.12 for credits, -12.12 for debits" name="transaction[amount]">
-    <p>To update the transactions description, type here.
+    <p>To update the transactions description, type here.</p>
     <input type="text" placeholder="Update description" name="transaction[description]">
     <p>To update the transactions's date, type here.</p>
     <input type="text" placeholder="Ex. 06-01-2015" name="transaction[date]">
@@ -45,6 +46,5 @@
     <input type="submit">
   </form>
 </div>
-
 
 <div style="clear: both"></div>

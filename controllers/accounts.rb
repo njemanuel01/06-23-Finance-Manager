@@ -59,11 +59,12 @@ end
 # Save updates to table
 get "/update_account_form_do" do
   check_user
+  @user = User.find(session["id"])
   account = Account.find(params["account"]["id"])
   account.name = params["account"]["name"]
   account.save
   @errors = "Account updated."
-  erb :"accounts/accounts_menu"
+  erb :"accounts/update_account_form"
 end
 
 # Choose an account to delete
@@ -76,6 +77,7 @@ end
 # Deletes account from table
 get "/delete_account" do
   check_user
+  @user = User.find(session["id"])
   account = Account.find(params["account"]["id"])
   if account.delete?
     account.users.each do |user|
@@ -83,9 +85,9 @@ get "/delete_account" do
     end
     account.delete
     @errors = "Account deleted."
-    erb :"accounts/accounts_menu"
+    erb :"accounts/delete_account_list"
   else
     @errors = "The account has a balance, it cannot be deleted."
-    erb :"accounts/accounts_menu"
+    erb :"accounts/delete_account_list"
   end
 end

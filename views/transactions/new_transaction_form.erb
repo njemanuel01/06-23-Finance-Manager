@@ -1,5 +1,3 @@
-<h3 class="errors"><%= @errors %></h3>
-
 <h1>Enter the information for the transaction.</h1>
 
 <div class="menu">
@@ -13,6 +11,7 @@
 </div>
 
 <div class="content">
+  <h3 class="errors"><%= @errors %></h3>
   <form action="/new_transaction_form_do">
     <p>Enter the amount as either a credit or debit.</p>
     <input type='text' placeholder='Ex. 12.12 for credits, -12.12 for debits' name="transaction[amount]">

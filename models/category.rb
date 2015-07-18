@@ -5,9 +5,9 @@ class Category< ActiveRecord::Base
   
   def delete?
     if self.transactions != {}
-       errors.messages["transaction"] = "This categor is link to transactions."
+       errors.messages["transaction"] = "This category is linked to transactions."
     else
-      return true
+      return false
     end
   end
   

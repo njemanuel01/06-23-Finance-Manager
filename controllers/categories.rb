@@ -25,7 +25,8 @@ get "/new_category_form_do" do
     @errors = "Category saved."
     erb :"categories/new_category_form"
   else
-    @errors = "Category name " + category.errors.messages["name"][0]
+    binding.pry
+    @errors = "Category name " + category.errors.messages[:name][0]
     erb :"categories/new_category_form"
   end
 end
@@ -47,11 +48,12 @@ get "/delete_category" do
   check_user
   category = Category.find(params["category"]["id"])
   if category.delete?
-    category.delete
-    @errors = "Category deleted."
+    binding.pry
+    @errors = category.errors.messages["transaction"]
     erb :"categories/delete_category_list"
   else
-    @errors = errors.messages["transaction"]
+    category.delete
+    @errors = "Category deleted."
     erb :"categories/delete_category_list"
   end
 end

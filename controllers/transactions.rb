@@ -20,6 +20,7 @@ end
 # Add transaction to table
 get "/new_transaction_form_do" do
   check_user
+  @user = User.find(session["id"])
   transaction = Transaction.new({"id" => nil, "amount" => params["transaction"]["amount"].to_f, "description" => params["transaction"]["description"], "date" => params["transaction"]["date"], 
     "category_id" => params["transaction"]["category_id"], "account_id" => params["transaction"]["account_id"]})
   if transaction.amount_not_zero?
@@ -28,10 +29,10 @@ get "/new_transaction_form_do" do
     account.save
     transaction.save
     @errors = "Transaction added."
-    return erb :"transactions/transactions_menu"
+    return erb :"transactions/new_transaction_form"
   else
     @errors = "Amount cannot be 0."
-    erb :"transactions/transactions_menu"
+    erb :"transactions/new_transaction_form"
   end
 end
 
@@ -52,6 +53,7 @@ end
 # Get a list of transactions for a specific account
 get "/where" do
   check_user
+  @id = params["id"]
   @user = User.find(session["id"])
   erb :"transactions/where_account"
 end
@@ -66,6 +68,7 @@ end
 # Save updates to table
 get "/update_transaction_form_do" do
   check_user
+  @user = User.find(session["id"])
   transaction = Transaction.find(params["transaction"]["id"])
   @errors = []
   if params["transaction"]["account_id"] != "blank"
@@ -99,7 +102,7 @@ get "/update_transaction_form_do" do
   end
   
   transaction.save
-  erb :"transactions/transactions_menu"
+  erb :"transactions/update_transaction_form"
 end
 
 # Choose a transaction to delete

@@ -14,7 +14,7 @@
   <ul>
     <% @user.accounts.each do |account| %>
       <% account.transactions.each do |transaction|%>
-        <li><a href="/single_transaction/<%=transaction.id%>"><%= transaction.id %> - <%= transaction.amount %> - 
+        <li><a href="/single_transaction/<%=transaction.id%>">Account #:<%= transaction.account_id %>  Amount:<%= transaction.amount %>  Date: 
         <%= transaction.date %></a></li>
       <% end %>
     <% end %>

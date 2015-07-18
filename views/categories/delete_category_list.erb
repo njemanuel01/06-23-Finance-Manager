@@ -1,5 +1,3 @@
-<h3><%= @message %></h3>
-
 <h1>Please select a category to delete.  It can only be deleted if there are no transactions associated with it.</h1>
 
 <div class="menu">
@@ -11,6 +9,7 @@
 </div>
 
 <div class="content">
+  <h3 id="errors"><%=@errors%></h3>
   <form action="/delete_category">
     <select name ="category[id]">
       <% Category.all.each do |category| %> 

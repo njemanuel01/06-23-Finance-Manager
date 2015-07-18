@@ -1,5 +1,3 @@
-<h3 class="errors"><%= @errors %></h3>
-
 <h1>Please select an account to delete.  It can only be deleted if there is no balance.</h1>
 
 <div class="menu">
@@ -12,6 +10,7 @@
 </div>
 
 <div class="content">
+  <h3 id="errors"><%=@errors%></h3>
   <form action="/delete_account">
     <select name ="account[id]">
       <% @user.accounts.each do |account| %> 

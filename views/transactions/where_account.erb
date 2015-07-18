@@ -20,12 +20,12 @@
     <input type="submit">
   </form>
 
-  <% if params["id"]%>
+  <% if @id%>
     <h1>Here they are. Click on a transaction to see it's full details.'</h1>
 
     <ul>  
-      <% Transaction.where("account_id", params["id"]).each do |transaction| %>
-        <li><a href="/single_transaction/<%=transaction.id%>"><%= transaction.id %> - <%= transaction.amount%> - <%= transaction.date%> - <%= transaction.description%></li>
+      <% Transaction.where("account_id" => @id).each do |transaction| %>
+        <li><a href="/single_transaction/<%=transaction.id%>">Id #:<%= transaction.id %>  Amount:$<%= transaction.amount%>  Date:<%= transaction.date%></a></li>
         <% end %>
     </ul>
   <% end %>

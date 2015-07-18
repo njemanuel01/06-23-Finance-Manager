@@ -6,9 +6,9 @@
     <li><a href="/delete_user">Remove yourself as a user</a></li>
   </ul>
 </div>
-<p><%= @errors %></p>
+<h3 id="errors"><%= @errors %></h3>
 <h3>Email</h3>
-<p><%=@user.email%></p>
+<h4><%=@user.email%></h4>
 <h3>Balance in all accounts</h3>
-<p>$<%=@user.total_balance%></p>
+<h4>$<%=@user.total_balance%></h4>
 <div style="clear: both"></div>

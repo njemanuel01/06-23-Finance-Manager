@@ -31,7 +31,11 @@ get "/new_user_form_do" do
     session[:id] = user.id
     return erb :"main/home"
   else
-    @errors = "Email " + user.errors.messages[:email][0]
+    if params["password"] == ""
+      @errors = "You must enter a password."
+    else
+      @errors = "Email " + user.errors.messages[:email][0]
+    end
     erb :"main/new_user_form"
   end
 end

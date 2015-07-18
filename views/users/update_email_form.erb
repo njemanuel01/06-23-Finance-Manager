@@ -1,13 +1,15 @@
 <div class="menu">
   <ul>
     <li><a href="/update_email_form">Update your email</a></li>
-    <li><a href="/update_user_form">Update your information</a></li>
+    <li><a href="/change_password_form">Change your password</a></li>
     <li><a href="/delete_user_list">Remove yourself as a user</a></li>
   </ul>
 </div>
 
 <div class="content">
-  <p><%= @errors %></p>
+  <h3 id="errors"><%= @errors %></h3>
+  <h3>Current Email Address:</h3>
+  <h4><%=@user.email%></h4>
   <form action="/update_email_form_do">
     <p>Your new email address</p>
     <input type="text" placeholder="Update email" name="user[email]">
