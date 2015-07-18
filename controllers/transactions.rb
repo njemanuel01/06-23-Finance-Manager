@@ -1,10 +1,19 @@
+def check_user
+  if session[:id] == nil
+    redirect "/"
+  end
+end 
+
 # Main menus for transactions
 get "/transactions_menu" do
+  check_user
   erb :"transactions/transactions_menu"
 end
 
 # Create a new transaction
 get "/new_transaction" do
+  check_user
+  @user = User.find(session["id"])
   erb :"transactions/new_transaction_form"
 end
 
@@ -12,19 +21,23 @@ end
 get "/new_transaction_form_do" do
   transaction = Transaction.new({"id" => nil, "amount" => params["transaction"]["amount"].to_f, "description" => params["transaction"]["description"], "date" => params["transaction"]["date"], 
     "category_id" => params["transaction"]["category_id"], "account_id" => params["transaction"]["account_id"]})
-  if transaction.add_to_database
+  if transaction.valid?
     account = Account.find(params["transaction"]["account_id"])
     account.transaction(params["transaction"]["amount"].to_f)
     account.save
-    erb :"transactions/added"
+    transaction.save
+    @errors = "Transaction added."
+    return erb :"transactions/transactions_menu"
   else
-    @errors = transaction.errors
-    erb :"transactions/new_transaction_form"
+    @errors = "Amount cannot be 0."
+    erb :"transactions/transactions_menu"
   end
 end
 
 # Get a list of all transactions and their information
 get "/all_transactions" do
+  check_user
+  @user = User.find(session["id"])
   erb :"transactions/transactions"
 end
 

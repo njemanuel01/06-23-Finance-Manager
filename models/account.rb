@@ -13,7 +13,7 @@ class Account< ActiveRecord::Base
   #
   # Returns a float
   def transaction(amount)
-    @balance += amount
+    self.balance += amount
   end
   
   # Updates the account balance when a transaction is updated or deleted
@@ -24,7 +24,7 @@ class Account< ActiveRecord::Base
   # Returns a float
   def update_balance(old_value, new_value = 0)
     diff = old_value - new_value
-    @balance -= diff
+    self.balance -= diff
   end
   
   # Tests to see if an account can be deleted

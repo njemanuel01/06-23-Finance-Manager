@@ -4,7 +4,7 @@
 
 <div class="menu">
   <ul>
-    <li><a href="/new_transaction">Create a transaction</a></li>
+    <li><a href="/new_transaction">Add a transaction</a></li>
     <li><a href="/all_transactions">See a list of all transactions and information on them.</a></li>
     <li><a href="/where">See a list of transactions for a specific account</a></li>
     <li><a href="/update_transaction_form">Update a transaction's information</a></li>
@@ -28,8 +28,8 @@
     </select>
     <p>Enter the account for the transaction</p>
     <select name ="transaction[account_id]">
-      <% Account.all.each do |account| %> 
-        <option value="<%= account.id %>"><%= account.id %></option>
+      <% @user.accounts.each do |account| %> 
+        <option value="<%= account.id %>"><%= account.id %>-<%= account.name %></option>
       <% end %>
     </select>
     <input type='submit'>
