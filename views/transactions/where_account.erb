@@ -13,8 +13,8 @@
 <div class="content">
   <form action="/where">
     <select name ="id">
-      <% Account.all.each do |account| %> 
-        <option value="<%= account.id %>"><%= account.id %></option>
+      <% @user.accounts.each do |account| %> 
+        <option value="<%= account.id %>"><%= account.id %>-<%= account.name%></option>
       <% end %>
     </select>
     <input type="submit">

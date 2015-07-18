@@ -2,7 +2,7 @@
 
 <div class="menu">
   <ul>
-    <li><a href="/new_transaction">Create a transaction</a></li>
+    <li><a href="/new_transaction">Add a transaction</a></li>
     <li><a href="/all_transactions">See a list of all transactions and information on them.</a></li>
     <li><a href="/where">See a list of transactions for a specific account</a></li>
     <li><a href="/update_transaction_form">Update a transaction's information</a></li>
@@ -13,9 +13,11 @@
 <div class="content">
   <form action="/update_transaction_form_do">
     <select name ="transaction[id]">
-      <% Transaction.all.each do |transaction| %> 
-        <option value="<%= transaction.id %>"><%= transaction.amount %> - <%= transaction.date %> - 
+      <% @user.accounts.each do |account| %>
+        <% account.transactions.each do |transaction|%>
+          <option value="<%= transaction.id %>"><%= transaction.amount %> - <%= transaction.date %> - 
           <%= transaction.description %></option>
+        <% end %>
       <% end %>
     </select>
   
@@ -36,8 +38,8 @@
     <h3>For account update, please select the new account (leave blank if you do not wish to update)</h3>
     <select name ="transaction[account_id]">
       <option value="blank"></option>
-      <% Account.all.each do |account| %> 
-        <option value="<%= account.id %>"><%= account.id %></option>
+      <% @user.accounts.each do |account| %> 
+        <option value="<%= account.id %>"><%= account.id %>-<%= account.name %></option>
       <% end %>
     </select></b>
     <input type="submit">
